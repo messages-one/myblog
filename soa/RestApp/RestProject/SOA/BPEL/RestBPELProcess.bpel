@@ -1,0 +1,75 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Thu Oct 30 14:22:19 EET 2014
+  Author:  agelenler
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="RestBPELProcess"
+               targetNamespace="http://xmlns.oracle.com/RestApp/RestProject/RestBPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/RestApp/RestProject/RestBPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/RestApp/RestProject/ValidateRestService"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns2="http://xmlns.oracle.com/RestfulApp/RestfulProject/RestBPELProcess">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <partnerLinks>
+    <partnerLink name="ValidateRestService" partnerLinkType="ns1:ValidateRestService"
+                 myRole="ValidateRestServiceProvider"/>
+  </partnerLinks>
+  <variables>
+    <variable name="ReceiveInput_validateData_InputVariable" messageType="ns1:validateData_inputMessage"/>
+    <variable name="ReplyOutput_validateData_OutputVariable" messageType="ns1:validateData_outputMessage"/>
+  </variables>
+  <sequence name="main">
+    <receive name="ReceiveInput" createInstance="yes" partnerLink="ValidateRestService"
+             portType="ns1:ValidateRestService_ptt" operation="validateData"
+             variable="ReceiveInput_validateData_InputVariable"/>
+    <scope name="Scope1">
+      <faultHandlers>
+        <catchAll>
+          <assign name="AssignFalse">
+            <copy>
+              <from>false()</from>
+              <to>$ReplyOutput_validateData_OutputVariable.reply/ns2:result</to>
+            </copy>
+          </assign>
+        </catchAll>
+      </faultHandlers>
+      <sequence name="Sequence1">
+        <validate name="ValidateData" variables="ReceiveInput_validateData_InputVariable"/>
+        <assign name="AssignTrue">
+          <copy>
+            <from>true()</from>
+            <to>$ReplyOutput_validateData_OutputVariable.reply/ns2:result</to>
+          </copy>
+        </assign>
+      </sequence>
+    </scope>
+    <reply name="ReplyOutput" variable="ReplyOutput_validateData_OutputVariable" partnerLink="ValidateRestService"
+           portType="ns1:ValidateRestService_ptt" operation="validateData"/>
+  </sequence>
+</process>

@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function getSelectedText() 
+			{
+				var txtArea = document.getElementById("textarea1");
+				var selectedText;   
+				//	tested with chrome version 38.0.2125.111, ie version 11.0.9600.17420, mozilla version 32.0.3
+				if (txtArea.selectionStart != undefined)
+				{    
+				  var startPosition = txtArea.selectionStart;
+				  var endPosition = txtArea.selectionEnd;
+				  selectedText = txtArea.value.substring(startPosition, endPosition);
+				}
+				alert("You selected :" + selectedText);
+			}
+		</script>
+	</head>
+	<body>
+		<textarea id="textarea1" onselect="getSelectedText()" cols="75"  rows="30">
+		</textarea>
+	</body>
+</html>

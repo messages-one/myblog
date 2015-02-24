@@ -1,0 +1,20 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+  $(document).ready(function() {
+   $('#myButton').click(function () { 
+	 $('#myDiv').html('test');
+	 alert("Jquery object value " + $('#myDiv').html());
+	 alert("HTML Dom object value " + $('#myDiv')[0].innerHTML);		
+     return true;
+   });   
+  });
+</script>
+</head>
+<body>
+ <input type="button" id="myButton" value="fill the div">
+ <br/>
+ <div id="myDiv"></div>
+</body>
+</html> 

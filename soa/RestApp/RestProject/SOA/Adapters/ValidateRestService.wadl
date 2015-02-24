@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://xmlns.oracle.com/RestApp/RestProject/ValidateRestService" xmlns:ns1="http://xmlns.oracle.com/RestfulApp/RestfulProject/RestBPELProcess" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="ValidateRestService">Rest Service to validate data</doc>
+   <grammars>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://xmlns.oracle.com/RestfulApp/RestfulProject/RestBPELProcess" schemaLocation="../Schemas/RestSchema.xsd"/>
+        </xsd:schema>
+   </grammars>
+   <resources>
+      <resource path="/validate">
+         <method name="POST" soa:wsdlOperation="validateData">
+            <request>
+               <representation mediaType="application/xml" element="cns:process" xmlns:cns="http://xmlns.oracle.com/RestfulApp/RestfulProject/RestBPELProcess"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/xml" element="cns:processResponse" xmlns:cns="http://xmlns.oracle.com/RestfulApp/RestfulProject/RestBPELProcess"/>
+            </response>
+         </method>
+      </resource>
+   </resources>
+</application>

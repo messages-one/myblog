@@ -1,0 +1,1 @@
+This project is used by the other memory related projects in order to calculate Object sizes.

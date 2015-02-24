@@ -1,0 +1,29 @@
+<?xml version= "1.0" encoding= "UTF-8" ?>
+<schema targetNamespace="http://platform.integration.oracle/blocks/adapter/fw/metadata/ldapReferenceForCompare"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://platform.integration.oracle/blocks/adapter/fw/metadata/ldapReferenceForCompare"
+            elementFormDefault="unqualified">
+  <element name="compareRequest">
+     <complexType>
+         <sequence>
+             <element name="compareAttribute">
+                 <complexType>
+                     <sequence>
+                         <element name="value" type="string"/>
+                     </sequence>
+                     <attribute name="name" type="string"/>
+                 </complexType>
+             </element>
+         </sequence>
+         <attribute name="dn" type="string"/>
+     </complexType>
+  </element>
+  <element name="compareResponse">
+     <complexType>
+           <sequence>
+             <element name="comparison" type="boolean"/>
+           </sequence>
+           <attribute name="dn" type="string"/>
+     </complexType>
+  </element>
+</schema>

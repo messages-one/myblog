@@ -1,0 +1,28 @@
+<wsdl:definitions
+     name="hastaKabulDatabaseReference"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/HastaneYonetimBilgiSistemi/HastaKabul/hastaKabulDatabaseReference"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/HastaneYonetimBilgiSistemi/HastaKabul/hastaKabulDatabaseReference"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/hastaKabulDatabaseReference"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="hastaKabulDatabaseReference_plt" >
+    <plt:role name="hastaKabulDatabaseReference_role" >
+      <plt:portType name="tns:hastaKabulDatabaseReference_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/hastaKabulDatabaseReference" schemaLocation="../Schemas/hastaKabulDatabaseReference_table.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="HastaKabulCollection_msg">
+        <wsdl:part name="HastaKabulCollection" element="top:HastaKabulCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="hastaKabulDatabaseReference_ptt">
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:HastaKabulCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

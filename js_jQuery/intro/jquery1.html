@@ -1,0 +1,39 @@
+<html>
+ <head>
+ <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- for google CDN use
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+-->
+ <script>
+   $(document).ready(function() {
+     $('#myLink').click(function () { 
+          alert('myLink_click');
+	  var myText = $('#myText');
+	  myText.val('test');
+          return true;
+     });   
+     $('#myLinkReset').click(function () { 
+	  var myText = $('#myText');
+	  myText.val('');
+          return true;
+     }); 
+   });
+   function myButton_onClick() {
+       alert('myButton_onClick');
+       $('#myLink').click();	
+   }
+    function myLink_onClick() {
+        alert('myLink_onClick');
+   }
+  </script>
+ </head>
+ <body>
+   <input type="text" id="myText">
+   <br/>
+   <input type="button" id="myButton" onClick="myButton_onClick()" value="click me">
+   <br/>
+   <a id='myLink' href='#' onClick="myLink_onClick()"> click me </a>
+   <br/>
+   <a id='myLinkReset' href='#' > reset </a>
+ </body>
+</html> 

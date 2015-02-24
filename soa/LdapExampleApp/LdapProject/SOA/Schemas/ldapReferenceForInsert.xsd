@@ -1,0 +1,28 @@
+<?xml version= "1.0" encoding= "UTF-8" ?>
+<schema targetNamespace="http://platform.integration.oracle/blocks/adapter/fw/metadata/ldapReferenceForInsert"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://platform.integration.oracle/blocks/adapter/fw/metadata/ldapReferenceForInsert"
+            elementFormDefault="unqualified">
+  <element name="addRequest">
+     <complexType>
+         <sequence>
+             <element name="dn" type="string"/>
+             <element name="requestAttributes">
+                 <complexType>
+                    <sequence>
+                       <element name="cn" type="tns:multiValueAttribute"/>
+                       <element name="sn" type="tns:multiValueAttribute"/>
+                       <element name="uid" type="tns:multiValueAttribute"/>
+                       <element name="userPassword" type="tns:multiValueAttribute"/>
+                    </sequence>
+                 </complexType>
+             </element>
+          </sequence>
+     </complexType>
+  </element>
+<complexType name="multiValueAttribute">
+   <sequence>
+       <element name="value" type="string" maxOccurs="unbounded"/>
+   </sequence>
+</complexType>
+</schema>

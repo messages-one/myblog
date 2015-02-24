@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>99</line>
+      <col/>
+      <file>BPEL/CoherenceBPELProcess.bpel</file>
+      <name>BPEL/CoherenceBPELProcess.bpel</name>
+      <fix>Make sure that the expression in &lt;bpel:condition> is a boolean expression.</fix>
+      <msg>The expression $InvokeCoherenceGet_Get_OutputVariable.body/clie ... in &lt;bpel:condition> is not a boolean expression.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>133</line>
+      <col/>
+      <file>BPEL/CoherenceBPELProcess.bpel</file>
+      <name>BPEL/CoherenceBPELProcess.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns4:Person" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>137</line>
+      <col/>
+      <file>BPEL/CoherenceBPELProcess.bpel</file>
+      <name>BPEL/CoherenceBPELProcess.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns4:Person" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>141</line>
+      <col/>
+      <file>BPEL/CoherenceBPELProcess.bpel</file>
+      <name>BPEL/CoherenceBPELProcess.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns4:Person" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>145</line>
+      <col/>
+      <file>BPEL/CoherenceBPELProcess.bpel</file>
+      <name>BPEL/CoherenceBPELProcess.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns4:Person" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>149</line>
+      <col/>
+      <file>BPEL/CoherenceBPELProcess.bpel</file>
+      <name>BPEL/CoherenceBPELProcess.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns4:Person" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>153</line>
+      <col/>
+      <file>BPEL/CoherenceBPELProcess.bpel</file>
+      <name>BPEL/CoherenceBPELProcess.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns4:Person" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>157</line>
+      <col/>
+      <file>BPEL/CoherenceBPELProcess.bpel</file>
+      <name>BPEL/CoherenceBPELProcess.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns4:Person" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+</Faults>

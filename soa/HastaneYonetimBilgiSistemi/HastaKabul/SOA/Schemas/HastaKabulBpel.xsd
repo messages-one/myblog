@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+        targetNamespace="http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel"
+        xmlns:tns="http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="hastaKabul" type="tns:hastaKabulGiris"/>
+  <complexType name="hastaKabulGiris">
+    <sequence>
+      <element name="hastaTCKimlikNo" type="tns:hastaTCKimlikNoType"/>
+      <element name="provizyonTarihi" type="string"/>
+      <element name="saglikTesisKodu" type="int"/>
+      <element name="bransKodu" type="string"/>
+      <element name="tedaviTuru" type="tns:tedaviTuruType"/>
+      <element name="takipTipi" type="tns:takipTipiType"/>
+    </sequence>
+  </complexType>
+  <element name="hastaKabulResponse" type="tns:hastaKabulCevap"/>
+  <complexType name="hastaKabulCevap">
+    <sequence>
+      <element name="sonucMesaji" type="string"/>
+    </sequence>
+  </complexType>
+   <element name="hastaKabulFault" type="tns:hastaKabulFaultMessage"/>
+        <complexType name="hastaKabulFaultMessage">
+            <sequence>
+                <element name="detail" type="string" minOccurs="0"/>
+            </sequence>
+        </complexType>
+  <simpleType name="hastaTCKimlikNoType">
+    <restriction base="string">
+      <maxLength value="11"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="tedaviTuruType">
+    <restriction base="string">
+      <enumeration value="A"/><!-- Ayaktan -->
+      <enumeration value="G"/><!-- Günübirlik -->
+      <enumeration value="Y"/><!-- Yatan -->
+    </restriction>
+  </simpleType>
+    <simpleType name="takipTipiType">
+    <restriction base="string">
+      <enumeration value="N"/><!-- Normal -->
+      <enumeration value="K"/><!-- Komplikasyon -->
+      <enumeration value="Y"/><!-- Yoğun bakım -->
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,176 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Sep 24 07:52:17 EEST 2014
+  Author:  agelenler
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="HastaKabulBpel"
+               targetNamespace="http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/HastaneYonetimBilgiSistemi/HastaKabul/hastaKabulDatabaseReference"
+         xmlns:ns2="http://xmlns.oracle.com/HastaKabulRules/HastaKabulRules_DecisionService_1"
+         xmlns:ns3="http://xmlns.oracle.com/bpel"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/top/hastaKabulDBReference"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/HastaneYonetimBilgiSistemi/HastaKabul/hastaKabulDatabaseReference">
+    <import location="oracle.xml.parser.v2.XMLElement" importType="http://schemas.oracle.com/bpel/extension/java"/>
+    <import location="hastakabul.TCKNoValidation" importType="http://schemas.oracle.com/bpel/extension/java"/>
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel" location="../WSDLs/HastaKabulBpel.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="hastakabulbpel_client" partnerLinkType="client:HastaKabulBpel" myRole="HastaKabulBpelProvider"/>
+    <partnerLink name="HastaKabulRules.HastaKabulRules_DecisionService_1"
+                 partnerLinkType="ns2:HastaKabulRules.HastaKabulRules_DecisionService_1"
+                 partnerRole="IDecisionService"/>
+    <partnerLink name="hastaKabulDatabaseReference" partnerLinkType="ns5:hastaKabulDatabaseReference_plt"
+                 partnerRole="hastaKabulDatabaseReference_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="inputVariable" messageType="client:HastaKabulBpelRequestMessage"/>
+    <variable name="outputVariable" messageType="client:HastaKabulBpelResponseMessage"/>
+    <variable name="TCKNoValidationResult" type="xsd:boolean"/>
+    <variable name="FaultMessage" messageType="client:HastaKabulBPELFault"/>
+    <variable name="InvokeDb_insert_InputVariable" messageType="ns1:HastaKabulCollection_msg"/>
+  </variables>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in HastaKabulBpel.wsdl) -->
+    <receive name="receiveInput" partnerLink="hastakabulbpel_client" portType="client:HastaKabulBpel" operation="hastaKabul" variable="inputVariable" createInstance="yes"/>
+    <scope name="HastaKabulRules">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:decide"></bpelx:pattern>
+      </bpelx:annotation>
+      <variables>
+        <variable name="dsIn" messageType="ns2:callFunctionStatelessMessage"/>
+        <variable name="dsOut" messageType="ns2:callFunctionStatelessDecisionMessage"/>
+      </variables>
+      <sequence name="Sequence4">
+        <assign name="Facts_To_Rule_Service">
+          <copy>
+            <from variable="inputVariable" part="payload"/>
+            <to variable="dsIn" part="payload"><query>ns2:parameterList/client:hastaKabul</query></to>
+          </copy>
+        </assign>
+        <assign name="BPEL_Header">
+          <copy>
+            <from>"HastaKabulRules_DecisionService_1"</from>
+            <to variable="dsIn" part="payload"><query>@name</query></to>
+          </copy>
+        </assign>
+        <invoke name="Invoke" partnerLink="HastaKabulRules.HastaKabulRules_DecisionService_1"
+                portType="ns2:IDecisionService" operation="callFunctionStateless" inputVariable="dsIn"
+                outputVariable="dsOut"/>
+        <assign name="Rule_Service_To_Facts">
+          <copy>
+            <from variable="dsOut" part="payload"><query>ns2:resultList/client:hastaKabulResponse/client:sonucMesaji</query></from>
+            <to variable="outputVariable" part="payload"><query>client:sonucMesaji</query></to>
+          </copy>
+        </assign>
+      </sequence>
+    </scope>
+    <if name="If_ERROR_ON_RULES">
+      <condition>$outputVariable.payload/client:sonucMesaji != ''</condition>
+      <sequence name="Sequence3">
+        <assign name="AssignForThrow">
+          <copy>
+            <from>$outputVariable.payload/client:sonucMesaji</from>
+            <to>$FaultMessage.fault/client:detail</to>
+          </copy>
+        </assign>
+        <throw name="ThrowOnRuleError" faultName="client:fault" faultVariable="FaultMessage"/>
+      </sequence>
+    </if>
+    <extensionActivity>
+      <bpelx:exec name="TCKNoValidation" language="java">
+        <![CDATA[try{     
+XMLElement input =  (XMLElement) getVariableData("inputVariable","payload","/client:hastaKabul/client:hastaTCKimlikNo");	       
+String tckNo = input.getTextContent();         
+boolean result = TCKNoValidation.validate(tckNo);
+setVariableData("TCKNoValidationResult", result);
+}catch(Exception e) {     
+System.out.println("exception " + e);     
+addAuditTrailEntry(e);     
+}]]>
+      </bpelx:exec>
+    </extensionActivity>
+    <if name="If_TCKNOValid">
+      <documentation>
+        <![CDATA[TCKNO is not valid]]>
+      </documentation>
+      <condition>$TCKNoValidationResult != true()</condition>
+      <sequence name="Sequence2">
+        <assign name="AssignForThrow">
+          <copy>
+            <from>'TCK No onaylama başarısız oldu!'</from>
+            <to>$FaultMessage.fault/client:detail</to>
+          </copy>
+        </assign>
+        <throw name="ThrowOnTCKFailure" faultName="client:fault" faultVariable="FaultMessage"/>
+      </sequence>
+    </if>
+    <assign name="TransformForDB">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:transformation"></bpelx:pattern>
+      </bpelx:annotation>
+      <copy>
+        <from>ora:doXSLTransformForDoc("../Transformations/Transformation_1.xsl", $inputVariable.payload)</from>
+        <to variable="InvokeDb_insert_InputVariable" part="HastaKabulCollection"/>
+      </copy>
+    </assign>
+    <invoke name="InvokeDb" partnerLink="hastaKabulDatabaseReference"
+            portType="ns5:hastaKabulDatabaseReference_ptt" operation="insert"
+            inputVariable="InvokeDb_insert_InputVariable" bpelx:invokeAsDetail="no"/>
+    <assign name="AssignForSuccesfullResult">
+      <copy>
+        <from>'Kayıt başarıyla oluşturuldu'</from>
+        <to>$outputVariable.payload/client:sonucMesaji</to>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="hastakabulbpel_client" portType="client:HastaKabulBpel" operation="hastaKabul" variable="outputVariable"/>
+  </sequence>
+</process>

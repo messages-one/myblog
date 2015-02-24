@@ -1,0 +1,176 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Oct 31 09:43:52 EET 2014
+  Author:  agelenler
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="CoherenceBPELProcess"
+               targetNamespace="http://xmlns.oracle.com/CoherenceApp/CoherenceProject/CoherenceBPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/CoherenceApp/CoherenceProject/CoherenceBPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/coherence/CoherenceApp/CoherenceProject/coherenceReferenceGET"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/CoherenceApp/CoherenceProject/dbReferenceForSelect"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/coherence/CoherenceApp/CoherenceProject/coherenceReferencePut"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReferenceForSelect"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/CoherenceApp/CoherenceProject/CoherenceBPELProcess" location="../WSDLs/CoherenceBPELProcess.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="coherencebpelprocess_client" partnerLinkType="client:CoherenceBPELProcess" myRole="CoherenceBPELProcessProvider"/>
+    <partnerLink name="coherenceReferenceGET" partnerLinkType="ns1:Get_plt" partnerRole="Get_role"/>
+    <partnerLink name="dbReferenceForSelect" partnerLinkType="ns2:dbReferenceForSelect_plt"
+                 partnerRole="dbReferenceForSelect_role"/>
+    <partnerLink name="coherenceReferencePut" partnerLinkType="ns3:Put_plt" partnerRole="Put_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="inputVariable" messageType="client:CoherenceBPELProcessRequestMessage"/>
+    <variable name="outputVariable" messageType="client:CoherenceBPELProcessResponseMessage"/>
+    <variable name="InvokeCoherenceGet_Get_InputVariable" messageType="ns1:Get_msg"/>
+    <variable name="InvokeCoherenceGet_Get_OutputVariable" messageType="ns1:GetResponse_msg"/>
+    <variable name="InvokeDBForSelect_dbReferenceForSelectSelect_InputVariable"
+              messageType="ns2:dbReferenceForSelectSelect_inputParameters"/>
+    <variable name="InvokeDBForSelect_dbReferenceForSelectSelect_OutputVariable"
+              messageType="ns2:PersonCollection_msg"/>
+    <variable name="InvokeCoherencePut_Put_InputVariable" messageType="ns3:Put_msg"/>
+    <variable name="InvokeCoherencePut_Put_OutputVariable" messageType="ns3:PutResponse_msg"/>
+  </variables>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in CoherenceBPELProcess.wsdl) -->
+    <receive name="receiveInput" partnerLink="coherencebpelprocess_client" portType="client:CoherenceBPELProcess" operation="process" variable="inputVariable" createInstance="yes"/>
+    <invoke name="InvokeCoherenceGet" bpelx:invokeAsDetail="no" partnerLink="coherenceReferenceGET"
+            portType="ns1:Get_ptt" operation="Get" inputVariable="InvokeCoherenceGet_Get_InputVariable"
+            outputVariable="InvokeCoherenceGet_Get_OutputVariable">
+      <bpelx:toProperties>
+        <bpelx:toProperty name="jca.coherence.Key" variable="inputVariable" part="payload">
+          <bpelx:query>client:id</bpelx:query>
+        </bpelx:toProperty>
+      </bpelx:toProperties>
+    </invoke>
+    <if name="If1">
+      <documentation>
+        <![CDATA[If Data is in cache]]>
+      </documentation>
+      <condition>$InvokeCoherenceGet_Get_OutputVariable.body/client:name</condition>
+      <assign name="AssignOutput">
+        <copy>
+          <from>$InvokeCoherenceGet_Get_OutputVariable.body/client:id</from>
+          <to>$outputVariable.payload/client:id</to>
+        </copy>
+        <copy>
+          <from>$InvokeCoherenceGet_Get_OutputVariable.body/client:name</from>
+          <to>$outputVariable.payload/client:name</to>
+        </copy>
+        <copy>
+          <from>$InvokeCoherenceGet_Get_OutputVariable.body/client:surname</from>
+          <to>$outputVariable.payload/client:surname</to>
+        </copy>
+        <copy>
+          <from>$InvokeCoherenceGet_Get_OutputVariable.body/client:birthDate</from>
+          <to>$outputVariable.payload/client:birthDate</to>
+        </copy>
+      </assign>
+      <else>
+        <sequence name="Sequence1">
+          <assign name="AssignDBForSelect">
+            <copy>
+              <from>$inputVariable.payload/client:id</from>
+              <to>$InvokeDBForSelect_dbReferenceForSelectSelect_InputVariable.dbReferenceForSelectSelect_inputParameters/ns4:id</to>
+            </copy>
+          </assign>
+          <invoke name="InvokeDBForSelect" partnerLink="dbReferenceForSelect" portType="ns2:dbReferenceForSelect_ptt"
+                  operation="dbReferenceForSelectSelect"
+                  inputVariable="InvokeDBForSelect_dbReferenceForSelectSelect_InputVariable"
+                  outputVariable="InvokeDBForSelect_dbReferenceForSelectSelect_OutputVariable"
+                  bpelx:invokeAsDetail="no"/>
+          <assign name="AssignForCoherencePutAndOutput">
+            <copy>
+              <from>$InvokeDBForSelect_dbReferenceForSelectSelect_OutputVariable.PersonCollection/ns4:Person/ns4:id</from>
+              <to>$outputVariable.payload/client:id</to>
+            </copy>
+            <copy>
+              <from>$InvokeDBForSelect_dbReferenceForSelectSelect_OutputVariable.PersonCollection/ns4:Person/ns4:name</from>
+              <to>$outputVariable.payload/client:name</to>
+            </copy>
+            <copy>
+              <from>$InvokeDBForSelect_dbReferenceForSelectSelect_OutputVariable.PersonCollection/ns4:Person/ns4:surname</from>
+              <to>$outputVariable.payload/client:surname</to>
+            </copy>
+            <copy>
+              <from>$InvokeDBForSelect_dbReferenceForSelectSelect_OutputVariable.PersonCollection/ns4:Person/ns4:birthDate</from>
+              <to>$outputVariable.payload/client:birthDate</to>
+            </copy>
+            <copy>
+              <from>$InvokeDBForSelect_dbReferenceForSelectSelect_OutputVariable.PersonCollection/ns4:Person/ns4:name</from>
+              <to>$InvokeCoherencePut_Put_InputVariable.body/client:name</to>
+            </copy>
+            <copy>
+              <from>$InvokeDBForSelect_dbReferenceForSelectSelect_OutputVariable.PersonCollection/ns4:Person/ns4:surname</from>
+              <to>$InvokeCoherencePut_Put_InputVariable.body/client:surname</to>
+            </copy>
+            <copy>
+              <from>$InvokeDBForSelect_dbReferenceForSelectSelect_OutputVariable.PersonCollection/ns4:Person/ns4:birthDate</from>
+              <to>$InvokeCoherencePut_Put_InputVariable.body/client:birthDate</to>
+            </copy>
+          </assign>
+          <invoke name="InvokeCoherencePut" bpelx:invokeAsDetail="no" partnerLink="coherenceReferencePut"
+                  portType="ns3:Put_ptt" operation="Put" inputVariable="InvokeCoherencePut_Put_InputVariable"
+                  outputVariable="InvokeCoherencePut_Put_OutputVariable">
+            <bpelx:toProperties>
+              <bpelx:toProperty name="jca.coherence.Key" variable="inputVariable" part="payload">
+                <bpelx:query>client:id</bpelx:query>
+              </bpelx:toProperty>
+            </bpelx:toProperties>
+          </invoke>
+        </sequence>
+      </else>
+    </if>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="coherencebpelprocess_client" portType="client:CoherenceBPELProcess" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

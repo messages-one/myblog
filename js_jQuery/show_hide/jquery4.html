@@ -1,0 +1,22 @@
+<html>
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+   $('#myButton').click(function () { 
+	if($('#myLink').is(':visible'))
+	   $('#myLink').hide();
+	else 
+	   $('#myLink').show();
+     return true;
+   });   
+  });
+</script>
+</head>
+<body>
+ <input type="button" id="myButton" value=" show/hide link">
+ <br/>
+ <a id='myLink' href='#' onClick="myLink_onClick()">my link</a>
+</body>
+</html> 

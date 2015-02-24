@@ -1,0 +1,115 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Oct 24 13:11:01 EEST 2014
+  Author:  agelenler
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="LdapBpelProcessForCompare"
+               targetNamespace="http://xmlns.oracle.com/LdapExampleApp/LdapProjectForCompareAndAuthentication/LdapBpelProcessForCompare"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/LdapExampleApp/LdapProjectForCompareAndAuthentication/LdapBpelProcessForCompare"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ldap/LdapExampleApp/LdapProjectForCompareAndAuthentication/ldapReferenceForCompare"
+         xmlns:ns2="http://platform.integration.oracle/blocks/adapter/fw/metadata/ldapReferenceForCompare"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  
+    <import location="oracle.xml.parser.v2.XMLElement" importType="http://schemas.oracle.com/bpel/extension/java"/>
+    <import location="ldapprojectforcompareandauthentication.SSHA" importType="http://schemas.oracle.com/bpel/extension/java"/>
+  
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/LdapExampleApp/LdapProjectForCompareAndAuthentication/LdapBpelProcessForCompare" location="../WSDLs/LdapBpelProcessForCompare.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="ldapbpelprocessforcompare_client" partnerLinkType="client:LdapBpelProcessForCompare" myRole="LdapBpelProcessForCompareProvider"/>
+    <partnerLink name="ldapReferenceForCompare" partnerLinkType="ns1:compare_plt" partnerRole="compare_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="inputVariable" messageType="client:LdapBpelProcessForCompareRequestMessage"/>
+    <variable name="outputVariable" messageType="client:LdapBpelProcessForCompareResponseMessage"/>
+    <variable name="InvokeForCompare_compare_InputVariable" messageType="ns1:compare_request_msg"/>
+    <variable name="InvokeForCompare_compare_OutputVariable" messageType="ns1:compare_response_msg"/>
+    <variable name="userPassword" type="xsd:string"/>
+  </variables>
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in LdapBpelProcessForCompare.wsdl) -->
+    <receive name="receiveInput" partnerLink="ldapbpelprocessforcompare_client" portType="client:LdapBpelProcessForCompare" operation="process" variable="inputVariable" createInstance="yes"/>
+    <extensionActivity>
+      <bpelx:exec name="GetSSHAofPassword" language="java">
+        <![CDATA[try {  
+  XMLElement inputPassword =  (XMLElement) getVariableData("inputVariable","payload","/client:process/client:userPassword");	         
+  String userPassword = inputPassword.getTextContent();           
+  String digestPassword = SSHA.getInstance().createDigest(userPassword);  
+  setVariableData("userPassword", digestPassword);  
+}catch(Exception e) {  
+ System.out.println("Error getting digest " + e.getMessage());  
+}]]>
+      </bpelx:exec>
+    </extensionActivity>
+    <assign name="AssignForCompare">
+      <copy>
+        <from><literal>userPassword</literal></from>
+        <to>$InvokeForCompare_compare_InputVariable.body/compareAttribute/@name</to>
+      </copy>
+      <copy>
+        <from>$userPassword</from>
+        <to>$InvokeForCompare_compare_InputVariable.body/compareAttribute/value</to>
+      </copy>
+      <copy>
+        <from>concat('uid=',$inputVariable.payload/client:uid,',ou=users,ou=system')</from>
+        <to>$InvokeForCompare_compare_InputVariable.body/@dn</to>
+      </copy>
+    </assign>
+    <invoke name="InvokeForCompare" partnerLink="ldapReferenceForCompare"
+            portType="ns1:compare_ptt" operation="compare" inputVariable="InvokeForCompare_compare_InputVariable"
+            outputVariable="InvokeForCompare_compare_OutputVariable" bpelx:invokeAsDetail="no"/>
+    <assign name="AssignResult">
+      <copy>
+        <from>$InvokeForCompare_compare_OutputVariable.body/comparison</from>
+        <to>$outputVariable.payload/client:result</to>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="ldapbpelprocessforcompare_client" portType="client:LdapBpelProcessForCompare" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

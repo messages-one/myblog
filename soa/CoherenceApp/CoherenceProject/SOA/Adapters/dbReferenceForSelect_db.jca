@@ -1,0 +1,14 @@
+<adapter-config name="dbReferenceForSelect" adapter="db" wsdlLocation="../WSDLs/dbReferenceForSelect.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="CoherenceConn" location="eis/DB/SOA"/>
+  <endpoint-interaction portType="dbReferenceForSelect_ptt" operation="dbReferenceForSelectSelect">
+    <interaction-spec className="oracle.tip.adapter.db.DBReadInteractionSpec">
+      <property name="DescriptorName" value="dbReferenceForSelect.Person"/>
+      <property name="QueryName" value="dbReferenceForSelectSelect"/>
+      <property name="MappingsMetaDataURL" value="dbReferenceForSelect-or-mappings.xml"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

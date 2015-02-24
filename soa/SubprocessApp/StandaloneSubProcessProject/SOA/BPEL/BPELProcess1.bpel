@@ -1,0 +1,119 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Nov 12 14:54:15 EET 2014
+  Author:  agelenler
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcess1"
+               targetNamespace="http://xmlns.oracle.com/SubprocessApp/StandaloneSubProcessProject/BPELProcess1"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/SubprocessApp/StandaloneSubProcessProject/BPELProcess1"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/SubprocessApp/StandaloneSubProcessProject/BPELProcess2"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:sp1="http://xmlns.oracle.com/SubprocessApp/StandaloneSubProcessProject/StandaloneSubprocess"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/SubprocessApp/StandaloneSubProcessProject/dbReference_2"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/SubprocessApp/StandaloneSubProcessProject/dbReferencedForCount"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ns4="http://xmlns.oracle.com/pcbpel/adapter/db/dbReferencedForCount"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns5="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference_2">
+
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/SubprocessApp/StandaloneSubProcessProject/BPELProcess1" location="../WSDLs/BPELProcess1.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="bpelprocess1_client" partnerLinkType="client:BPELProcess1" myRole="BPELProcess1Provider"/>
+    <partnerLink name="dbReferencedForCount" partnerLinkType="ns3:dbReferencedForCount_plt"
+                 partnerRole="dbReferencedForCount_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:BPELProcess1RequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:BPELProcess1ResponseMessage"/>
+    <variable name="InputValue" type="xsd:string"/>
+    <variable name="InvokeCount_dbReferencedForCount_InputVariable" messageType="ns3:dbReferencedForCountInput_msg"/>
+    <variable name="InvokeCount_dbReferencedForCount_OutputVariable" messageType="ns3:dbReferencedForCountOutput_msg"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in BPELProcess1.wsdl) -->
+    <receive name="receiveInput" partnerLink="bpelprocess1_client" portType="client:BPELProcess1" operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="AssignForStandaloneCall">
+      <copy>
+        <from>$inputVariable.payload/client:input</from>
+        <to>$InputValue</to>
+      </copy>
+    </assign>
+    <extensionActivity>
+      <bpelx:call name="CallStandaloneSubProcess" target="sp1:StandaloneSubprocess">
+        <bpelx:param name="InputVar" copyByValue="yes" variable="InputValue"/>
+      </bpelx:call>
+    </extensionActivity>
+    <invoke name="InvokeCount" inputVariable="InvokeCount_dbReferencedForCount_InputVariable"
+            outputVariable="InvokeCount_dbReferencedForCount_OutputVariable"
+            partnerLink="dbReferencedForCount" portType="ns3:dbReferencedForCount_ptt"
+            operation="dbReferencedForCount" bpelx:invokeAsDetail="no"/>
+    <if name="If1">
+      <condition>$InvokeCount_dbReferencedForCount_OutputVariable.dbReferencedForCountOutput/ns4:COUNT &lt; 5</condition>
+      <sequence name="Sequence1">
+        <assign name="AssignForStandalone">
+          <copy>
+            <from>concat($inputVariable.payload/client:input,'-',$InvokeCount_dbReferencedForCount_OutputVariable.dbReferencedForCountOutput/ns4:COUNT)</from>
+            <to>$InputValue</to>
+          </copy>
+        </assign>
+        <extensionActivity>
+          <bpelx:call name="CallStandaloneSubProces" target="sp1:StandaloneSubprocess">
+            <bpelx:param name="InputVar" copyByValue="yes" variable="InputValue"/>
+          </bpelx:call>
+        </extensionActivity>
+      </sequence>
+    </if>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="bpelprocess1_client" portType="client:BPELProcess1" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

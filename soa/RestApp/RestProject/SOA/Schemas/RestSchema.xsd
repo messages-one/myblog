@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1254" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified"
+        targetNamespace="http://xmlns.oracle.com/RestfulApp/RestfulProject/RestBPELProcess">
+  <element name="process">
+    <complexType>
+      <sequence>
+        <element name="input" type="string"/>
+        <element name="input2" type="date"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="boolean"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>
+

@@ -1,0 +1,11 @@
+<adapter-config name="dbReferencedForCount" adapter="db" wsdlLocation="../WSDLs/dbReferencedForCount.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="ConnectionSubProcess" location="eis/DB/SOA"/>
+  <endpoint-interaction portType="dbReferencedForCount_ptt" operation="dbReferencedForCount">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select count(*) as COUNT from TEST"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

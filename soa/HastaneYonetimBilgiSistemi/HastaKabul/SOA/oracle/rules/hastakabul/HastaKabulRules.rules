@@ -1,0 +1,1889 @@
+<?xml version="1.0"?>
+<RuleDictionary id="G}6e899a3:149312e3824:-7c23" xmlns="http://xmlns.oracle.com/rules/dictionary">
+  <Name>HastaKabulRules</Name>
+  <Alias>HastaKabulRules</Alias>
+  <Package>hastakabul</Package>
+  <Version>12.1.1.0.0</Version>
+  <DataModel id="L}1">
+    <CreationUpdateNumber>2</CreationUpdateNumber>
+    <QualifierPattern>{member} of {fact}</QualifierPattern>
+    <JaxbFactType id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris">
+      <Name>com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris</Name>
+      <Alias>HastaKabulGiris</Alias>
+      <Visible>true</Visible>
+      <CreationUpdateNumber>3</CreationUpdateNumber>
+      <Property id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.{bransKodu}">
+        <Name>bransKodu</Name>
+        <Alias>bransKodu</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}java.lang.String</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Writable>true</Writable>
+        <Readable>true</Readable>
+        <Local>true</Local>
+        <Expression id="L}37">
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+        <PrimaryKey>false</PrimaryKey>
+      </Property>
+      <Property id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.{hastaTCKimlikNo}">
+        <Name>hastaTCKimlikNo</Name>
+        <Alias>hastaTCKimlikNo</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}java.lang.String</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Writable>true</Writable>
+        <Readable>true</Readable>
+        <Local>true</Local>
+        <Expression id="L}38">
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+        <PrimaryKey>false</PrimaryKey>
+      </Property>
+      <Property id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.{provizyonTarihi}">
+        <Name>provizyonTarihi</Name>
+        <Alias>provizyonTarihi</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}java.lang.String</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Writable>true</Writable>
+        <Readable>true</Readable>
+        <Local>true</Local>
+        <Expression id="L}39">
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+        <PrimaryKey>false</PrimaryKey>
+      </Property>
+      <Property id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.{saglikTesisKodu}">
+        <Name>saglikTesisKodu</Name>
+        <Alias>saglikTesisKodu</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}int</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>int</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Writable>true</Writable>
+        <Readable>true</Readable>
+        <Local>true</Local>
+        <Expression id="L}40">
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+        <PrimaryKey>false</PrimaryKey>
+      </Property>
+      <Property id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.{takipTipi}">
+        <Name>takipTipi</Name>
+        <Alias>takipTipi</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>TakipTipiType</Type>
+        <IDofBucketSet>G}6e899a3:149312e3824:-7c15</IDofBucketSet>
+        <BucketSet>TakipTipiType</BucketSet>
+        <Writable>true</Writable>
+        <Readable>true</Readable>
+        <Local>true</Local>
+        <Expression id="L}41">
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+        <PrimaryKey>false</PrimaryKey>
+      </Property>
+      <Property id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.{tedaviTuru}">
+        <Name>tedaviTuru</Name>
+        <Alias>tedaviTuru</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>TedaviTuruType</Type>
+        <IDofBucketSet>G}6e899a3:149312e3824:-7c09</IDofBucketSet>
+        <BucketSet>TedaviTuruType</BucketSet>
+        <Writable>true</Writable>
+        <Readable>true</Readable>
+        <Local>true</Local>
+        <Expression id="L}42">
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+        <PrimaryKey>false</PrimaryKey>
+      </Property>
+      <Method id="J}public void com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.setSaglikTesisKodu(int)">
+        <Name>setSaglikTesisKodu</Name>
+        <Alias>setSaglikTesisKodu</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c21">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}int</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}14">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}void</IDofType>
+        <Type>void</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public java.lang.String com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.getHastaTCKimlikNo()">
+        <Name>getHastaTCKimlikNo</Name>
+        <Alias>getHastaTCKimlikNo</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}16">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public java.lang.String com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.getProvizyonTarihi()">
+        <Name>getProvizyonTarihi</Name>
+        <Alias>getProvizyonTarihi</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}18">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public void com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.setHastaTCKimlikNo(java.lang.String)">
+        <Name>setHastaTCKimlikNo</Name>
+        <Alias>setHastaTCKimlikNo</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c20">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}20">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}void</IDofType>
+        <Type>void</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public int com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.getSaglikTesisKodu()">
+        <Name>getSaglikTesisKodu</Name>
+        <Alias>getSaglikTesisKodu</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}22">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}int</IDofType>
+        <Type>int</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public void com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.setProvizyonTarihi(java.lang.String)">
+        <Name>setProvizyonTarihi</Name>
+        <Alias>setProvizyonTarihi</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c1f">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}24">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}void</IDofType>
+        <Type>void</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public java.lang.String com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.getBransKodu()">
+        <Name>getBransKodu</Name>
+        <Alias>getBransKodu</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}26">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public void com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.setBransKodu(java.lang.String)">
+        <Name>setBransKodu</Name>
+        <Alias>setBransKodu</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c1e">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}28">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}void</IDofType>
+        <Type>void</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.getTedaviTuru()">
+        <Name>getTedaviTuru</Name>
+        <Alias>getTedaviTuru</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}30">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</IDofType>
+        <Type>TedaviTuruType</Type>
+        <IDofBucketSet>G}6e899a3:149312e3824:-7c09</IDofBucketSet>
+        <BucketSet>TedaviTuruType</BucketSet>
+      </Method>
+      <Method id="J}public void com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.setTedaviTuru(com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType)">
+        <Name>setTedaviTuru</Name>
+        <Alias>setTedaviTuru</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c1d">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}32">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}void</IDofType>
+        <Type>void</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.getTakipTipi()">
+        <Name>getTakipTipi</Name>
+        <Alias>getTakipTipi</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}34">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</IDofType>
+        <Type>TakipTipiType</Type>
+        <IDofBucketSet>G}6e899a3:149312e3824:-7c15</IDofBucketSet>
+        <BucketSet>TakipTipiType</BucketSet>
+      </Method>
+      <Method id="J}public void com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.setTakipTipi(com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType)">
+        <Name>setTakipTipi</Name>
+        <Alias>setTakipTipi</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c1c">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}36">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}void</IDofType>
+        <Type>void</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Constructor id="J}public com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris()">
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Visible>true</Visible>
+        <Modifiers id="L}12">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+      </Constructor>
+      <IDofSuperClass>J}java.lang.Object</IDofSuperClass>
+      <ValidationUpdateNumber>3</ValidationUpdateNumber>
+      <Source>Schemas/HastaKabulBpel.xsd</Source>
+      <IsArray>false</IsArray>
+      <IDofArrayComponentType>B}nil</IDofArrayComponentType>
+      <SupportXPath>false</SupportXPath>
+      <IsInterface>false</IsInterface>
+      <Modifiers id="L}10">
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Access>1</Access>
+        <isStatic>false</isStatic>
+        <isFinal>false</isFinal>
+        <isAbstract>false</isAbstract>
+      </Modifiers>
+      <EnumBucketSetID>B}nil</EnumBucketSetID>
+      <Timestamp>0</Timestamp>
+      <ENUM>false</ENUM>
+      <XmlName>//xs:complexType[@name=&apos;hastaKabulGiris&apos;]</XmlName>
+      <JAXB2.0>true</JAXB2.0>
+      <NodeName>hastaKabulGiris</NodeName>
+      <Namespace>http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel</Namespace>
+    </JaxbFactType>
+    <JaxbFactType id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType">
+      <Name>com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</Name>
+      <Alias>TakipTipiType</Alias>
+      <Visible>false</Visible>
+      <CreationUpdateNumber>3</CreationUpdateNumber>
+      <Field id="J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.N">
+        <Name>N</Name>
+        <Alias>N</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>TakipTipiType</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Final>true</Final>
+        <Static>true</Static>
+        <Modifiers id="L}71">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Enum>true</Enum>
+      </Field>
+      <Field id="J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.K">
+        <Name>K</Name>
+        <Alias>K</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>TakipTipiType</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Final>true</Final>
+        <Static>true</Static>
+        <Modifiers id="L}73">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Enum>true</Enum>
+      </Field>
+      <Field id="J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.Y">
+        <Name>Y</Name>
+        <Alias>Y</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>TakipTipiType</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Final>true</Final>
+        <Static>true</Static>
+        <Modifiers id="L}75">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Enum>true</Enum>
+      </Field>
+      <Property id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.{declaringClass}">
+        <Name>declaringClass</Name>
+        <Alias>declaringClass</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}java.lang.Class</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>java.lang.Class</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Writable>false</Writable>
+        <Readable>true</Readable>
+        <Local>true</Local>
+        <Expression id="L}69">
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+        <PrimaryKey>false</PrimaryKey>
+      </Property>
+      <Method id="J}public java.lang.String com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.value()">
+        <Name>value</Name>
+        <Alias>value</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}46">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public static com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType[] com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.values()">
+        <Name>values</Name>
+        <Alias>values</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}48">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>true</Static>
+        <IDofType>J}[Lcom.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType;</IDofType>
+        <Type>TakipTipiType[]</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public static com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.valueOf(java.lang.String)">
+        <Name>valueOf</Name>
+        <Alias>valueOf</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c1b">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}50">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>true</Static>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</IDofType>
+        <Type>TakipTipiType</Type>
+        <IDofBucketSet>G}6e899a3:149312e3824:-7c15</IDofBucketSet>
+        <BucketSet>TakipTipiType</BucketSet>
+      </Method>
+      <Method id="J}public static com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.fromValue(java.lang.String)">
+        <Name>fromValue</Name>
+        <Alias>fromValue</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c1a">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}52">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>true</Static>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</IDofType>
+        <Type>TakipTipiType</Type>
+        <IDofBucketSet>G}6e899a3:149312e3824:-7c15</IDofBucketSet>
+        <BucketSet>TakipTipiType</BucketSet>
+      </Method>
+      <Method id="J}public final java.lang.String java.lang.Enum.name() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType">
+        <Name>name</Name>
+        <Alias>name</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}54">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final boolean java.lang.Enum.equals(java.lang.Object) declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType">
+        <Name>equals</Name>
+        <Alias>equals</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c19">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.Object</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}56">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}boolean</IDofType>
+        <Type>boolean</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public java.lang.String java.lang.Enum.toString() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType">
+        <Name>toString</Name>
+        <Alias>toString</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}58">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final int java.lang.Enum.hashCode() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType">
+        <Name>hashCode</Name>
+        <Alias>hashCode</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}60">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}int</IDofType>
+        <Type>int</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final int java.lang.Enum.compareTo(java.lang.Enum) declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType">
+        <Name>compareTo</Name>
+        <Alias>compareTo</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c18">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.Enum</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}62">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}int</IDofType>
+        <Type>int</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public static java.lang.Enum java.lang.Enum.valueOf(java.lang.Class,java.lang.String) declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType">
+        <Name>valueOf</Name>
+        <Alias>valueOf</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c17">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.Class</IDsOfType>
+        </OverloadedParameter>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c16">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}64">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>true</Static>
+        <IDofType>J}java.lang.Enum</IDofType>
+        <Type>java.lang.Enum</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final java.lang.Class java.lang.Enum.getDeclaringClass() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType">
+        <Name>getDeclaringClass</Name>
+        <Alias>getDeclaringClass</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}66">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.Class</IDofType>
+        <Type>java.lang.Class</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final int java.lang.Enum.ordinal() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType">
+        <Name>ordinal</Name>
+        <Alias>ordinal</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}68">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}int</IDofType>
+        <Type>int</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <IDofSuperClass>J}java.lang.Enum</IDofSuperClass>
+      <ValidationUpdateNumber>3</ValidationUpdateNumber>
+      <Source>Schemas/HastaKabulBpel.xsd</Source>
+      <IsArray>false</IsArray>
+      <IDofArrayComponentType>B}nil</IDofArrayComponentType>
+      <SupportXPath>false</SupportXPath>
+      <IsInterface>false</IsInterface>
+      <Modifiers id="L}44">
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Access>1</Access>
+        <isStatic>false</isStatic>
+        <isFinal>true</isFinal>
+        <isAbstract>false</isAbstract>
+      </Modifiers>
+      <EnumBucketSetID>G}6e899a3:149312e3824:-7c15</EnumBucketSetID>
+      <EnumBucketSet>TakipTipiType</EnumBucketSet>
+      <Timestamp>0</Timestamp>
+      <ENUM>true</ENUM>
+      <XmlName>//xs:simpleType[@name=&apos;takipTipiType&apos;]</XmlName>
+      <JAXB2.0>true</JAXB2.0>
+      <NodeName>takipTipiType</NodeName>
+      <Namespace>http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel</Namespace>
+    </JaxbFactType>
+    <JaxbFactType id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType">
+      <Name>com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</Name>
+      <Alias>TedaviTuruType</Alias>
+      <Visible>false</Visible>
+      <CreationUpdateNumber>3</CreationUpdateNumber>
+      <Field id="J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.A">
+        <Name>A</Name>
+        <Alias>A</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>TedaviTuruType</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Final>true</Final>
+        <Static>true</Static>
+        <Modifiers id="L}110">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Enum>true</Enum>
+      </Field>
+      <Field id="J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.G">
+        <Name>G</Name>
+        <Alias>G</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>TedaviTuruType</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Final>true</Final>
+        <Static>true</Static>
+        <Modifiers id="L}112">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Enum>true</Enum>
+      </Field>
+      <Field id="J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.Y">
+        <Name>Y</Name>
+        <Alias>Y</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>TedaviTuruType</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Final>true</Final>
+        <Static>true</Static>
+        <Modifiers id="L}114">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Enum>true</Enum>
+      </Field>
+      <Property id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.{declaringClass}">
+        <Name>declaringClass</Name>
+        <Alias>declaringClass</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}java.lang.Class</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>java.lang.Class</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Writable>false</Writable>
+        <Readable>true</Readable>
+        <Local>true</Local>
+        <Expression id="L}108">
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+        <PrimaryKey>false</PrimaryKey>
+      </Property>
+      <Method id="J}public java.lang.String com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.value()">
+        <Name>value</Name>
+        <Alias>value</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}85">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public static com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType[] com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.values()">
+        <Name>values</Name>
+        <Alias>values</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}87">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>true</Static>
+        <IDofType>J}[Lcom.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType;</IDofType>
+        <Type>TedaviTuruType[]</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public static com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.valueOf(java.lang.String)">
+        <Name>valueOf</Name>
+        <Alias>valueOf</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c0f">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}89">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>true</Static>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</IDofType>
+        <Type>TedaviTuruType</Type>
+        <IDofBucketSet>G}6e899a3:149312e3824:-7c09</IDofBucketSet>
+        <BucketSet>TedaviTuruType</BucketSet>
+      </Method>
+      <Method id="J}public static com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.fromValue(java.lang.String)">
+        <Name>fromValue</Name>
+        <Alias>fromValue</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c0e">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}91">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>true</Static>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</IDofType>
+        <Type>TedaviTuruType</Type>
+        <IDofBucketSet>G}6e899a3:149312e3824:-7c09</IDofBucketSet>
+        <BucketSet>TedaviTuruType</BucketSet>
+      </Method>
+      <Method id="J}public final java.lang.String java.lang.Enum.name() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType">
+        <Name>name</Name>
+        <Alias>name</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}93">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final boolean java.lang.Enum.equals(java.lang.Object) declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType">
+        <Name>equals</Name>
+        <Alias>equals</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c0d">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.Object</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}95">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}boolean</IDofType>
+        <Type>boolean</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public java.lang.String java.lang.Enum.toString() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType">
+        <Name>toString</Name>
+        <Alias>toString</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}97">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final int java.lang.Enum.hashCode() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType">
+        <Name>hashCode</Name>
+        <Alias>hashCode</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}99">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}int</IDofType>
+        <Type>int</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final int java.lang.Enum.compareTo(java.lang.Enum) declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType">
+        <Name>compareTo</Name>
+        <Alias>compareTo</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c0c">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.Enum</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}101">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}int</IDofType>
+        <Type>int</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public static java.lang.Enum java.lang.Enum.valueOf(java.lang.Class,java.lang.String) declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType">
+        <Name>valueOf</Name>
+        <Alias>valueOf</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c0b">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.Class</IDsOfType>
+        </OverloadedParameter>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c0a">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}103">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>true</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>true</Static>
+        <IDofType>J}java.lang.Enum</IDofType>
+        <Type>java.lang.Enum</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final java.lang.Class java.lang.Enum.getDeclaringClass() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType">
+        <Name>getDeclaringClass</Name>
+        <Alias>getDeclaringClass</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}105">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.Class</IDofType>
+        <Type>java.lang.Class</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public final int java.lang.Enum.ordinal() declared in com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType">
+        <Name>ordinal</Name>
+        <Alias>ordinal</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}107">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>true</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}int</IDofType>
+        <Type>int</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <IDofSuperClass>J}java.lang.Enum</IDofSuperClass>
+      <ValidationUpdateNumber>3</ValidationUpdateNumber>
+      <Source>Schemas/HastaKabulBpel.xsd</Source>
+      <IsArray>false</IsArray>
+      <IDofArrayComponentType>B}nil</IDofArrayComponentType>
+      <SupportXPath>false</SupportXPath>
+      <IsInterface>false</IsInterface>
+      <Modifiers id="L}83">
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Access>1</Access>
+        <isStatic>false</isStatic>
+        <isFinal>true</isFinal>
+        <isAbstract>false</isAbstract>
+      </Modifiers>
+      <EnumBucketSetID>G}6e899a3:149312e3824:-7c09</EnumBucketSetID>
+      <EnumBucketSet>TedaviTuruType</EnumBucketSet>
+      <Timestamp>0</Timestamp>
+      <ENUM>true</ENUM>
+      <XmlName>//xs:simpleType[@name=&apos;tedaviTuruType&apos;]</XmlName>
+      <JAXB2.0>true</JAXB2.0>
+      <NodeName>tedaviTuruType</NodeName>
+      <Namespace>http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel</Namespace>
+    </JaxbFactType>
+    <JaxbFactType id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.ObjectFactory">
+      <Name>com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.ObjectFactory</Name>
+      <Alias>com_oracle_xmlns_hastaneyonetimbilgisistemi_hastakabul_hastakabulbpel_ObjectFactory</Alias>
+      <Visible>false</Visible>
+      <CreationUpdateNumber>3</CreationUpdateNumber>
+      <Method id="J}public com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulFaultMessage com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.ObjectFactory.createHastaKabulFaultMessage()">
+        <Name>createHastaKabulFaultMessage</Name>
+        <Alias>createHastaKabulFaultMessage</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}126">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulFaultMessage</IDofType>
+        <Type>com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulFaultMessage</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public javax.xml.bind.JAXBElement com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.ObjectFactory.createHastaKabul(com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris)">
+        <Name>createHastaKabul</Name>
+        <Alias>createHastaKabul</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c03">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}128">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}javax.xml.bind.JAXBElement</IDofType>
+        <Type>JAXBElement</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public javax.xml.bind.JAXBElement com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.ObjectFactory.createHastaKabulFault(com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulFaultMessage)">
+        <Name>createHastaKabulFault</Name>
+        <Alias>createHastaKabulFault</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c02">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulFaultMessage</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}130">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}javax.xml.bind.JAXBElement</IDofType>
+        <Type>JAXBElement</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public javax.xml.bind.JAXBElement com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.ObjectFactory.createHastaKabulResponse(com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap)">
+        <Name>createHastaKabulResponse</Name>
+        <Alias>createHastaKabulResponse</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c01">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}132">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}javax.xml.bind.JAXBElement</IDofType>
+        <Type>JAXBElement</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.ObjectFactory.createHastaKabulCevap()">
+        <Name>createHastaKabulCevap</Name>
+        <Alias>createHastaKabulCevap</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}134">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap</IDofType>
+        <Type>HastaKabulCevap</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.ObjectFactory.createHastaKabulGiris()">
+        <Name>createHastaKabulGiris</Name>
+        <Alias>createHastaKabulGiris</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}136">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris</IDofType>
+        <Type>HastaKabulGiris</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Constructor id="J}public com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.ObjectFactory()">
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Visible>false</Visible>
+        <Modifiers id="L}124">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+      </Constructor>
+      <IDofSuperClass>J}java.lang.Object</IDofSuperClass>
+      <ValidationUpdateNumber>3</ValidationUpdateNumber>
+      <Source>Schemas/HastaKabulBpel.xsd</Source>
+      <IsArray>false</IsArray>
+      <IDofArrayComponentType>B}nil</IDofArrayComponentType>
+      <SupportXPath>false</SupportXPath>
+      <IsInterface>false</IsInterface>
+      <Modifiers id="L}122">
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Access>1</Access>
+        <isStatic>false</isStatic>
+        <isFinal>false</isFinal>
+        <isAbstract>false</isAbstract>
+      </Modifiers>
+      <EnumBucketSetID>B}nil</EnumBucketSetID>
+      <Timestamp>0</Timestamp>
+      <ENUM>false</ENUM>
+      <JAXB2.0>true</JAXB2.0>
+    </JaxbFactType>
+    <JaxbFactType id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap">
+      <Name>com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap</Name>
+      <Alias>HastaKabulCevap</Alias>
+      <Visible>true</Visible>
+      <CreationUpdateNumber>3</CreationUpdateNumber>
+      <Property id="J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.{sonucMesaji}">
+        <Name>sonucMesaji</Name>
+        <Alias>sonucMesaji</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <IDofType>J}java.lang.String</IDofType>
+        <ListContentID>B}nil</ListContentID>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+        <Writable>true</Writable>
+        <Readable>true</Readable>
+        <Local>true</Local>
+        <Expression id="L}145">
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+        <PrimaryKey>false</PrimaryKey>
+      </Property>
+      <Method id="J}public java.lang.String com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.getSonucMesaji()">
+        <Name>getSonucMesaji</Name>
+        <Alias>getSonucMesaji</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Modifiers id="L}142">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}java.lang.String</IDofType>
+        <Type>String</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Method id="J}public void com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.setSonucMesaji(java.lang.String)">
+        <Name>setSonucMesaji</Name>
+        <Alias>setSonucMesaji</Alias>
+        <Visible>false</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <OverloadedParameter id="G}6e899a3:149312e3824:-7c00">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <IDsOfType>J}java.lang.String</IDsOfType>
+        </OverloadedParameter>
+        <Modifiers id="L}144">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+        <Static>false</Static>
+        <IDofType>J}void</IDofType>
+        <Type>void</Type>
+        <IDofBucketSet>B}nil</IDofBucketSet>
+      </Method>
+      <Constructor id="J}public com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap()">
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Visible>true</Visible>
+        <Modifiers id="L}140">
+          <CreationUpdateNumber>3</CreationUpdateNumber>
+          <Access>1</Access>
+          <isStatic>false</isStatic>
+          <isFinal>false</isFinal>
+          <isAbstract>false</isAbstract>
+        </Modifiers>
+      </Constructor>
+      <IDofSuperClass>J}java.lang.Object</IDofSuperClass>
+      <ValidationUpdateNumber>3</ValidationUpdateNumber>
+      <Source>Schemas/HastaKabulBpel.xsd</Source>
+      <IsArray>false</IsArray>
+      <IDofArrayComponentType>B}nil</IDofArrayComponentType>
+      <SupportXPath>false</SupportXPath>
+      <IsInterface>false</IsInterface>
+      <Modifiers id="L}138">
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Access>1</Access>
+        <isStatic>false</isStatic>
+        <isFinal>false</isFinal>
+        <isAbstract>false</isAbstract>
+      </Modifiers>
+      <EnumBucketSetID>B}nil</EnumBucketSetID>
+      <Timestamp>0</Timestamp>
+      <ENUM>false</ENUM>
+      <XmlName>//xs:complexType[@name=&apos;hastaKabulCevap&apos;]</XmlName>
+      <JAXB2.0>true</JAXB2.0>
+      <NodeName>hastaKabulCevap</NodeName>
+      <Namespace>http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel</Namespace>
+    </JaxbFactType>
+    <BucketSet id="G}6e899a3:149312e3824:-7c15">
+      <Name>TakipTipiType</Name>
+      <Alias>TakipTipiType</Alias>
+      <Visible>true</Visible>
+      <CreationUpdateNumber>3</CreationUpdateNumber>
+      <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType</IDofType>
+      <ListContentID>B}nil</ListContentID>
+      <Type>TakipTipiType</Type>
+      <Form>Enum</Form>
+      <Bucket id="G}6e899a3:149312e3824:-7c13">
+        <Name>TakipTipiType.N</Name>
+        <Alias>N</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Inclusive>false</Inclusive>
+        <Otherwise>false</Otherwise>
+        <Excluded>false</Excluded>
+        <Expression id="L}78">
+          <Value>TakipTipiType.N</Value>
+          <ResolvedValue>`G}6e899a3:149312e3824:-7c15`.`J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.N`</ResolvedValue>
+          <IsConstant>true</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Bucket>
+      <Bucket id="G}6e899a3:149312e3824:-7c12">
+        <Name>TakipTipiType.K</Name>
+        <Alias>K</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Inclusive>false</Inclusive>
+        <Otherwise>false</Otherwise>
+        <Excluded>false</Excluded>
+        <Expression id="L}79">
+          <Value>TakipTipiType.K</Value>
+          <ResolvedValue>`G}6e899a3:149312e3824:-7c15`.`J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.K`</ResolvedValue>
+          <IsConstant>true</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Bucket>
+      <Bucket id="G}6e899a3:149312e3824:-7c11">
+        <Name>TakipTipiType.Y</Name>
+        <Alias>Y</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Inclusive>false</Inclusive>
+        <Otherwise>false</Otherwise>
+        <Excluded>false</Excluded>
+        <Expression id="L}80">
+          <Value>TakipTipiType.Y</Value>
+          <ResolvedValue>`G}6e899a3:149312e3824:-7c15`.`J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TakipTipiType.Y`</ResolvedValue>
+          <IsConstant>true</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Bucket>
+      <Bucket id="G}6e899a3:149312e3824:-7c10">
+        <Name>null</Name>
+        <Alias>null</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Inclusive>false</Inclusive>
+        <Otherwise>false</Otherwise>
+        <Excluded>false</Excluded>
+        <Expression id="L}81">
+          <Value>null</Value>
+          <ResolvedValue>null</ResolvedValue>
+          <IsConstant>true</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Bucket>
+      <CalendarForm>Date</CalendarForm>
+      <Excluded>false</Excluded>
+      <ValidationUpdateNumber>3</ValidationUpdateNumber>
+    </BucketSet>
+    <BucketSet id="G}6e899a3:149312e3824:-7c09">
+      <Name>TedaviTuruType</Name>
+      <Alias>TedaviTuruType</Alias>
+      <Visible>true</Visible>
+      <CreationUpdateNumber>3</CreationUpdateNumber>
+      <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType</IDofType>
+      <ListContentID>B}nil</ListContentID>
+      <Type>TedaviTuruType</Type>
+      <Form>Enum</Form>
+      <Bucket id="G}6e899a3:149312e3824:-7c07">
+        <Name>TedaviTuruType.A</Name>
+        <Alias>A</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Inclusive>false</Inclusive>
+        <Otherwise>false</Otherwise>
+        <Excluded>false</Excluded>
+        <Expression id="L}117">
+          <Value>TedaviTuruType.A</Value>
+          <ResolvedValue>`G}6e899a3:149312e3824:-7c09`.`J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.A`</ResolvedValue>
+          <IsConstant>true</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Bucket>
+      <Bucket id="G}6e899a3:149312e3824:-7c06">
+        <Name>TedaviTuruType.G</Name>
+        <Alias>G</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Inclusive>false</Inclusive>
+        <Otherwise>false</Otherwise>
+        <Excluded>false</Excluded>
+        <Expression id="L}118">
+          <Value>TedaviTuruType.G</Value>
+          <ResolvedValue>`G}6e899a3:149312e3824:-7c09`.`J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.G`</ResolvedValue>
+          <IsConstant>true</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Bucket>
+      <Bucket id="G}6e899a3:149312e3824:-7c05">
+        <Name>TedaviTuruType.Y</Name>
+        <Alias>Y</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Inclusive>false</Inclusive>
+        <Otherwise>false</Otherwise>
+        <Excluded>false</Excluded>
+        <Expression id="L}119">
+          <Value>TedaviTuruType.Y</Value>
+          <ResolvedValue>`G}6e899a3:149312e3824:-7c09`.`J}public static final com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.TedaviTuruType.Y`</ResolvedValue>
+          <IsConstant>true</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Bucket>
+      <Bucket id="G}6e899a3:149312e3824:-7c04">
+        <Name>null</Name>
+        <Alias>null</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>3</CreationUpdateNumber>
+        <Inclusive>false</Inclusive>
+        <Otherwise>false</Otherwise>
+        <Excluded>false</Excluded>
+        <Expression id="L}120">
+          <Value>null</Value>
+          <ResolvedValue>null</ResolvedValue>
+          <IsConstant>true</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Bucket>
+      <CalendarForm>Date</CalendarForm>
+      <Excluded>false</Excluded>
+      <ValidationUpdateNumber>3</ValidationUpdateNumber>
+    </BucketSet>
+    <SupportsXPathEnabled>false</SupportsXPathEnabled>
+    <DecisionFunction id="G}6e899a3:149312e3824:-7bfe">
+      <Name>DecisionService_1</Name>
+      <Alias>DecisionService_1</Alias>
+      <Visible>true</Visible>
+      <CreationUpdateNumber>3</CreationUpdateNumber>
+      <WebService>true</WebService>
+      <CheckRuleFlow>true</CheckRuleFlow>
+      <Stateless>true</Stateless>
+      <DecisionFunctionInput id="G}6e899a3:149312e3824:-7bfd">
+        <Name>hastaKabul</Name>
+        <Alias>hastaKabul</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>5</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris</IDofType>
+        <List>false</List>
+        <Tree>true</Tree>
+      </DecisionFunctionInput>
+      <DecisionFunctionRuleSet id="L}148">
+        <CreationUpdateNumber>4</CreationUpdateNumber>
+        <Form>rule set</Form>
+        <Ruleset>HastaKabulRuleset</Ruleset>
+        <refID>G}6e899a3:149312e3824:-7bff</refID>
+      </DecisionFunctionRuleSet>
+      <DecisionFunctionOutput id="G}6e899a3:149312e3824:-7bfc">
+        <Name>hastaKabulResponse</Name>
+        <Alias>hastaKabulResponse</Alias>
+        <Visible>true</Visible>
+        <CreationUpdateNumber>6</CreationUpdateNumber>
+        <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap</IDofType>
+        <List>false</List>
+        <Tree>false</Tree>
+      </DecisionFunctionOutput>
+      <ValidationUpdateNumber>86</ValidationUpdateNumber>
+      <RuleFiringLimit>10000</RuleFiringLimit>
+      <RuleFiringLimitError>true</RuleFiringLimitError>
+      <UniqueRulesets>false</UniqueRulesets>
+    </DecisionFunction>
+    <UpdateNumber>99</UpdateNumber>
+    <ValidationUpdateNumber>99</ValidationUpdateNumber>
+    <UpdateTime>0</UpdateTime>
+  </DataModel>
+  <RuleSet id="G}6e899a3:149312e3824:-7bff">
+    <Name>HastaKabulRuleset</Name>
+    <Alias>HastaKabulRuleset</Alias>
+    <ValidationUpdateNumber>102</ValidationUpdateNumber>
+    <Active>true</Active>
+    <CalendarForm>DateTime</CalendarForm>
+    <RuleSheet id="G}6e899a3:149312e3824:-7bfa">
+      <Name>DecisionTable1</Name>
+      <Alias>Decision Table 1</Alias>
+      <ValidationUpdateNumber>102</ValidationUpdateNumber>
+      <Priority>medium</Priority>
+      <Active>true</Active>
+      <CalendarForm>DateTime</CalendarForm>
+      <TreeMode>false</TreeMode>
+      <Visible>true</Visible>
+      <SimpleTest id="L}202">
+        <FactType>HastaKabulGiris</FactType>
+        <IDofFactType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris</IDofFactType>
+        <FactPath>HastaKabulGiris</FactPath>
+        <FactPathIDs>L}202</FactPathIDs>
+        <Form>FormIsA</Form>
+        <IDofOperator>B}==</IDofOperator>
+        <Connective>&amp;&amp;</Connective>
+        <Visible>false</Visible>
+        <DSLId>B}nil</DSLId>
+      </SimpleTest>
+      <ShowPatterns>false</ShowPatterns>
+      <Logical>false</Logical>
+      <Dimension id="L}198">
+        <IDofSharedBucketSet>G}6e899a3:149312e3824:-7c09</IDofSharedBucketSet>
+        <DimensionNode id="L}200">
+          <BucketIDTable>G}6e899a3:149312e3824:-7c07</BucketIDTable>
+          <Values>A</Values>
+          <ParentDimensionNode>B}nil</ParentDimensionNode>
+          <ChildDimensionNodes>L}219</ChildDimensionNodes>
+        </DimensionNode>
+        <DimensionNode id="L}210">
+          <BucketIDTable>G}6e899a3:149312e3824:-7c06</BucketIDTable>
+          <Values>G</Values>
+          <ParentDimensionNode>B}nil</ParentDimensionNode>
+          <ChildDimensionNodes>L}220</ChildDimensionNodes>
+        </DimensionNode>
+        <DimensionNode id="L}450">
+          <BucketIDTable>G}6e899a3:149312e3824:-7c05</BucketIDTable>
+          <Values>Y</Values>
+          <ParentDimensionNode>B}nil</ParentDimensionNode>
+          <ChildDimensionNodes>L}451</ChildDimensionNodes>
+        </DimensionNode>
+        <DimensionNode id="L}481">
+          <BucketIDTable></BucketIDTable>
+          <Values>-</Values>
+          <ParentDimensionNode>B}nil</ParentDimensionNode>
+          <ChildDimensionNodes>L}482</ChildDimensionNodes>
+        </DimensionNode>
+        <DimensionNode id="L}502">
+          <BucketIDTable></BucketIDTable>
+          <Values>-</Values>
+          <ParentDimensionNode>B}nil</ParentDimensionNode>
+          <ChildDimensionNodes>L}503</ChildDimensionNodes>
+        </DimensionNode>
+        <PrivateBucketSet id="G}6e899a3:149312e3824:-7bf5">
+          <Visible>true</Visible>
+          <CreationUpdateNumber>19</CreationUpdateNumber>
+          <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris</IDofType>
+          <ListContentID>B}nil</ListContentID>
+          <Type>HastaKabulGiris</Type>
+          <Form>Default</Form>
+          <Bucket id="G}6e899a3:149312e3824:-7bf4">
+            <Name>otherwise</Name>
+            <Alias>otherwise</Alias>
+            <Visible>true</Visible>
+            <CreationUpdateNumber>19</CreationUpdateNumber>
+            <Inclusive>true</Inclusive>
+            <Otherwise>true</Otherwise>
+            <Excluded>false</Excluded>
+            <Expression id="L}203">
+              <IsConstant>true</IsConstant>
+              <ParameterID>B}nil</ParameterID>
+            </Expression>
+          </Bucket>
+          <CalendarForm>Date</CalendarForm>
+          <Excluded>false</Excluded>
+          <ValidationUpdateNumber>-1</ValidationUpdateNumber>
+        </PrivateBucketSet>
+        <SharedBucketSet>TedaviTuruType</SharedBucketSet>
+        <Expression id="L}199">
+          <Value>HastaKabulGiris.tedaviTuru</Value>
+          <ResolvedValue>`L}202`.`J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.{tedaviTuru}`</ResolvedValue>
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Dimension>
+      <Dimension id="L}217">
+        <IDofSharedBucketSet>G}6e899a3:149312e3824:-7c15</IDofSharedBucketSet>
+        <DimensionNode id="L}219">
+          <BucketIDTable>G}6e899a3:149312e3824:-7c11</BucketIDTable>
+          <Values>Y</Values>
+          <ParentDimensionNode>L}200</ParentDimensionNode>
+          <ChildDimensionNodes></ChildDimensionNodes>
+        </DimensionNode>
+        <DimensionNode id="L}220">
+          <BucketIDTable>G}6e899a3:149312e3824:-7c11</BucketIDTable>
+          <Values>Y</Values>
+          <ParentDimensionNode>L}210</ParentDimensionNode>
+          <ChildDimensionNodes></ChildDimensionNodes>
+        </DimensionNode>
+        <DimensionNode id="L}451">
+          <BucketIDTable></BucketIDTable>
+          <Values>-</Values>
+          <ParentDimensionNode>L}450</ParentDimensionNode>
+          <ChildDimensionNodes></ChildDimensionNodes>
+        </DimensionNode>
+        <DimensionNode id="L}482">
+          <BucketIDTable>G}6e899a3:149312e3824:-7c13</BucketIDTable>
+          <Values>N</Values>
+          <ParentDimensionNode>L}481</ParentDimensionNode>
+          <ChildDimensionNodes></ChildDimensionNodes>
+        </DimensionNode>
+        <DimensionNode id="L}503">
+          <BucketIDTable>G}6e899a3:149312e3824:-7c12</BucketIDTable>
+          <Values>K</Values>
+          <ParentDimensionNode>L}502</ParentDimensionNode>
+          <ChildDimensionNodes></ChildDimensionNodes>
+        </DimensionNode>
+        <PrivateBucketSet id="G}6e899a3:149312e3824:-7bf3">
+          <Visible>true</Visible>
+          <CreationUpdateNumber>22</CreationUpdateNumber>
+          <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris</IDofType>
+          <ListContentID>B}nil</ListContentID>
+          <Type>HastaKabulGiris</Type>
+          <Form>Default</Form>
+          <Bucket id="G}6e899a3:149312e3824:-7bf2">
+            <Name>otherwise</Name>
+            <Alias>otherwise</Alias>
+            <Visible>true</Visible>
+            <CreationUpdateNumber>22</CreationUpdateNumber>
+            <Inclusive>true</Inclusive>
+            <Otherwise>true</Otherwise>
+            <Excluded>false</Excluded>
+            <Expression id="L}221">
+              <IsConstant>true</IsConstant>
+              <ParameterID>B}nil</ParameterID>
+            </Expression>
+          </Bucket>
+          <CalendarForm>Date</CalendarForm>
+          <Excluded>false</Excluded>
+          <ValidationUpdateNumber>-1</ValidationUpdateNumber>
+        </PrivateBucketSet>
+        <SharedBucketSet>TakipTipiType</SharedBucketSet>
+        <Expression id="L}218">
+          <Value>HastaKabulGiris.takipTipi</Value>
+          <ResolvedValue>`L}202`.`J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.{takipTipi}`</ResolvedValue>
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Dimension>
+      <DTAction id="L}252">
+        <Form>Assert New</Form>
+        <Target>HastaKabulCevap</Target>
+        <ResolvedTarget>`J}public com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap()`</ResolvedTarget>
+        <Expression id="L}466">
+          <IsConstant>false</IsConstant>
+          <ParameterAlias>sonucMesaji</ParameterAlias>
+          <ParameterID>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.{sonucMesaji}</ParameterID>
+          <DTActionParameterName>sonucMesaji</DTActionParameterName>
+        </Expression>
+        <DSLId>B}nil</DSLId>
+        <AlwaysSelected>true</AlwaysSelected>
+        <DTActionNode id="L}253">
+          <Selected>false</Selected>
+          <Expression id="L}471">
+            <Value>&quot;Ayaktan işlemlerde takip tipini Yoğun Bakım(Y) olarak göndermezsiniz!&quot;</Value>
+            <ResolvedValue>&quot;Ayaktan işlemlerde takip tipini Yoğun Bakım(Y) olarak göndermezsiniz!&quot;</ResolvedValue>
+            <IsConstant>false</IsConstant>
+            <ParameterAlias>sonucMesaji</ParameterAlias>
+            <ParameterID>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.{sonucMesaji}</ParameterID>
+            <DTActionParameterName>sonucMesaji</DTActionParameterName>
+          </Expression>
+        </DTActionNode>
+        <DTActionNode id="L}254">
+          <Selected>false</Selected>
+          <Expression id="L}472">
+            <Value>&quot;Günübirlik işlemlerde takip tipini Yoğun Bakım(Y) olarak göndermezsiniz!&quot;</Value>
+            <ResolvedValue>&quot;Günübirlik işlemlerde takip tipini Yoğun Bakım(Y) olarak göndermezsiniz!&quot;</ResolvedValue>
+            <IsConstant>false</IsConstant>
+            <ParameterAlias>sonucMesaji</ParameterAlias>
+            <ParameterID>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.{sonucMesaji}</ParameterID>
+            <DTActionParameterName>sonucMesaji</DTActionParameterName>
+          </Expression>
+        </DTActionNode>
+        <DTActionNode id="L}453">
+          <Selected>false</Selected>
+          <Expression id="L}473">
+            <Value>&quot;&quot;</Value>
+            <ResolvedValue>&quot;&quot;</ResolvedValue>
+            <IsConstant>false</IsConstant>
+            <ParameterAlias>sonucMesaji</ParameterAlias>
+            <ParameterID>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.{sonucMesaji}</ParameterID>
+            <DTActionParameterName>sonucMesaji</DTActionParameterName>
+          </Expression>
+        </DTActionNode>
+        <DTActionNode id="L}484">
+          <Selected>false</Selected>
+          <Expression id="L}487">
+            <Value>&quot;&quot;</Value>
+            <ResolvedValue>&quot;&quot;</ResolvedValue>
+            <IsConstant>false</IsConstant>
+            <ParameterAlias>sonucMesaji</ParameterAlias>
+            <ParameterID>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.{sonucMesaji}</ParameterID>
+            <DTActionParameterName>sonucMesaji</DTActionParameterName>
+          </Expression>
+        </DTActionNode>
+        <DTActionNode id="L}505">
+          <Selected>false</Selected>
+          <Expression id="L}508">
+            <Value>&quot;&quot;</Value>
+            <ResolvedValue>&quot;&quot;</ResolvedValue>
+            <IsConstant>false</IsConstant>
+            <ParameterAlias>sonucMesaji</ParameterAlias>
+            <ParameterID>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.{sonucMesaji}</ParameterID>
+            <DTActionParameterName>sonucMesaji</DTActionParameterName>
+          </Expression>
+        </DTActionNode>
+      </DTAction>
+      <DTRule id="L}201">
+        <Override></Override>
+        <RunBefore></RunBefore>
+        <NoConflict></NoConflict>
+        <OverriddenBy></OverriddenBy>
+        <RunAfter></RunAfter>
+        <CreationUpdateNumber>19</CreationUpdateNumber>
+      </DTRule>
+      <DTRule id="L}211">
+        <Override></Override>
+        <RunBefore></RunBefore>
+        <NoConflict></NoConflict>
+        <OverriddenBy></OverriddenBy>
+        <RunAfter></RunAfter>
+        <CreationUpdateNumber>21</CreationUpdateNumber>
+      </DTRule>
+      <DTRule id="L}452">
+        <Override>L}483 L}504</Override>
+        <RunBefore></RunBefore>
+        <NoConflict></NoConflict>
+        <OverriddenBy></OverriddenBy>
+        <RunAfter></RunAfter>
+        <CreationUpdateNumber>82</CreationUpdateNumber>
+      </DTRule>
+      <DTRule id="L}483">
+        <Override></Override>
+        <RunBefore></RunBefore>
+        <NoConflict></NoConflict>
+        <OverriddenBy>L}452</OverriddenBy>
+        <RunAfter></RunAfter>
+        <CreationUpdateNumber>93</CreationUpdateNumber>
+      </DTRule>
+      <DTRule id="L}504">
+        <Override></Override>
+        <RunBefore></RunBefore>
+        <NoConflict></NoConflict>
+        <OverriddenBy>L}452</OverriddenBy>
+        <RunAfter></RunAfter>
+        <CreationUpdateNumber>96</CreationUpdateNumber>
+      </DTRule>
+      <AllowGaps>true</AllowGaps>
+      <ConflictPolicy>manual</ConflictPolicy>
+      <OrderRulesByBucket>false</OrderRulesByBucket>
+      <VerticalOrientation>true</VerticalOrientation>
+    </RuleSheet>
+    <RuleSheet id="G}6e899a3:149312e3824:-7be9">
+      <Name>DecisionTable2</Name>
+      <Alias>Decision Table 2</Alias>
+      <ValidationUpdateNumber>80</ValidationUpdateNumber>
+      <Priority>medium</Priority>
+      <Active>true</Active>
+      <CalendarForm>DateTime</CalendarForm>
+      <TreeMode>false</TreeMode>
+      <Visible>true</Visible>
+      <SimpleTest id="L}324">
+        <FactType>HastaKabulGiris</FactType>
+        <IDofFactType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris</IDofFactType>
+        <FactPath>HastaKabulGiris</FactPath>
+        <FactPathIDs>L}324</FactPathIDs>
+        <Form>FormIsA</Form>
+        <IDofOperator>B}==</IDofOperator>
+        <Connective>&amp;&amp;</Connective>
+        <Visible>false</Visible>
+        <DSLId>B}nil</DSLId>
+      </SimpleTest>
+      <SimpleTest id="L}426">
+        <FactType>HastaKabulCevap</FactType>
+        <IDofFactType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap</IDofFactType>
+        <FactPath>HastaKabulCevap</FactPath>
+        <FactPathIDs>L}426</FactPathIDs>
+        <Form>FormIsA</Form>
+        <IDofOperator>B}==</IDofOperator>
+        <Connective>&amp;&amp;</Connective>
+        <Visible>false</Visible>
+        <DSLId>B}nil</DSLId>
+      </SimpleTest>
+      <ShowPatterns>false</ShowPatterns>
+      <Logical>false</Logical>
+      <Dimension id="L}320">
+        <IDofSharedBucketSet>B}bbs</IDofSharedBucketSet>
+        <DimensionNode id="L}322">
+          <BucketIDTable>B}bbtrue</BucketIDTable>
+          <Values>true</Values>
+          <ParentDimensionNode>B}nil</ParentDimensionNode>
+          <ChildDimensionNodes></ChildDimensionNodes>
+        </DimensionNode>
+        <PrivateBucketSet id="G}6e899a3:149312e3824:-7be8">
+          <Visible>true</Visible>
+          <CreationUpdateNumber>52</CreationUpdateNumber>
+          <IDofType>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris</IDofType>
+          <ListContentID>B}nil</ListContentID>
+          <Type>HastaKabulGiris</Type>
+          <Form>Default</Form>
+          <Bucket id="G}6e899a3:149312e3824:-7be7">
+            <Name>otherwise</Name>
+            <Alias>otherwise</Alias>
+            <Visible>true</Visible>
+            <CreationUpdateNumber>52</CreationUpdateNumber>
+            <Inclusive>true</Inclusive>
+            <Otherwise>true</Otherwise>
+            <Excluded>false</Excluded>
+            <Expression id="L}325">
+              <IsConstant>true</IsConstant>
+              <ParameterID>B}nil</ParameterID>
+            </Expression>
+          </Bucket>
+          <CalendarForm>Date</CalendarForm>
+          <Excluded>false</Excluded>
+          <ValidationUpdateNumber>-1</ValidationUpdateNumber>
+        </PrivateBucketSet>
+        <SharedBucketSet>boolean</SharedBucketSet>
+        <Expression id="L}321">
+          <Value>JavaDate.from date string(HastaKabulGiris.provizyonTarihi.trim()) &lt; JavaDate.add days to(Calendar.getInstance() ,-45)</Value>
+          <ResolvedValue>`J}oracle.rules.rl.extensions.JavaDate`.`J}public static java.util.Calendar oracle.rules.rl.extensions.JavaDate.fromDateString(java.lang.String) throws java.lang.IllegalArgumentException`(`L}324`.`J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulGiris.{provizyonTarihi}`.`J}public java.lang.String java.lang.String.trim()`()) &lt; `J}oracle.rules.rl.extensions.JavaDate`.`J}public static java.util.Calendar oracle.rules.rl.extensions.JavaDate.addDaysTo(java.util.Calendar,int)`(`J}java.util.Calendar`.`J}public static java.util.Calendar java.util.Calendar.getInstance()`() ,-45)</ResolvedValue>
+          <IsConstant>false</IsConstant>
+          <ParameterID>B}nil</ParameterID>
+        </Expression>
+      </Dimension>
+      <DTAction id="L}341">
+        <Form>Modify</Form>
+        <Target>HastaKabulCevap</Target>
+        <ResolvedTarget>`L}426`</ResolvedTarget>
+        <Expression id="L}425">
+          <IsConstant>false</IsConstant>
+          <ParameterAlias>sonucMesaji</ParameterAlias>
+          <ParameterID>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.{sonucMesaji}</ParameterID>
+          <DTActionParameterName>sonucMesaji</DTActionParameterName>
+        </Expression>
+        <DSLId>B}nil</DSLId>
+        <AlwaysSelected>true</AlwaysSelected>
+        <DTActionNode id="L}342">
+          <Selected>false</Selected>
+          <Expression id="L}437">
+            <Value>&quot;45 günden daha öncesine provizyon alamazsınız.&quot;</Value>
+            <ResolvedValue>&quot;45 günden daha öncesine provizyon alamazsınız.&quot;</ResolvedValue>
+            <IsConstant>false</IsConstant>
+            <ParameterAlias>sonucMesaji</ParameterAlias>
+            <ParameterID>J}com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel.HastaKabulCevap.{sonucMesaji}</ParameterID>
+            <DTActionParameterName>sonucMesaji</DTActionParameterName>
+          </Expression>
+        </DTActionNode>
+      </DTAction>
+      <DTRule id="L}323">
+        <Override></Override>
+        <RunBefore></RunBefore>
+        <NoConflict></NoConflict>
+        <OverriddenBy></OverriddenBy>
+        <RunAfter></RunAfter>
+        <CreationUpdateNumber>52</CreationUpdateNumber>
+      </DTRule>
+      <AllowGaps>true</AllowGaps>
+      <ConflictPolicy>manual</ConflictPolicy>
+      <OrderRulesByBucket>false</OrderRulesByBucket>
+      <VerticalOrientation>true</VerticalOrientation>
+    </RuleSheet>
+    <VisibilityFilterEnabled>false</VisibilityFilterEnabled>
+    <CreationUpdateNumber>3</CreationUpdateNumber>
+  </RuleSet>
+  <ValidationUpdateNumber>102</ValidationUpdateNumber>
+  <UpdateNumber>102</UpdateNumber>
+  <ResourceBundle>HastaKabulRulesTranslations</ResourceBundle>
+  <TestModel id="L}3">
+    <ValidationUpdateNumber>1</ValidationUpdateNumber>
+    <UpdateNumber>1</UpdateNumber>
+    <Validation>true</Validation>
+    <AutoSync>true</AutoSync>
+  </TestModel>
+  <Preferences id="G}6e899a3:149312e3824:-7c22">
+    <RulesExecutionAlgorithm>RETE</RulesExecutionAlgorithm>
+    <DisallowErrorSuppression>false</DisallowErrorSuppression>
+    <PhraseSuggestions>All</PhraseSuggestions>
+    <RestrictAutoSuggestions>true</RestrictAutoSuggestions>
+    <IncludeChainedExpressions>true</IncludeChainedExpressions>
+  </Preferences>
+</RuleDictionary>

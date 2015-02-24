@@ -1,0 +1,95 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Oct 24 12:52:44 EEST 2014
+  Author:  agelenler
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="LdapBpelProcessForSearch"
+               targetNamespace="http://xmlns.oracle.com/LdapExampleApp/LdapProjectForSearch/LdapBpelProcessForSearch"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/LdapExampleApp/LdapProjectForSearch/LdapBpelProcessForSearch"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/ldap/LdapExampleApp/LdapProjectForSearch/ldapReferenceForSearch"
+         xmlns:ns2="http://platform.integration.oracle/blocks/adapter/fw/metadata/ldapReferenceForSearch"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/LdapExampleApp/LdapProjectForSearch/LdapBpelProcessForSearch" location="../WSDLs/LdapBpelProcessForSearch.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="ldapbpelprocessforsearch_client" partnerLinkType="client:LdapBpelProcessForSearch" myRole="LdapBpelProcessForSearchProvider"/>
+    <partnerLink name="ldapReferenceForSearch" partnerLinkType="ns1:search_plt" partnerRole="search_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:LdapBpelProcessForSearchRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:LdapBpelProcessForSearchResponseMessage"/>
+    <variable name="InvokeForInsert_search_InputVariable" messageType="ns1:search_request_msg"/>
+    <variable name="InvokeForInsert_search_OutputVariable" messageType="ns1:search_response_msg"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in LdapBpelProcessForSearch.wsdl) -->
+    <receive name="receiveInput" partnerLink="ldapbpelprocessforsearch_client" portType="client:LdapBpelProcessForSearch" operation="process" variable="inputVariable" createInstance="yes"/>
+    <assign name="AssignForSearch">
+      <copy>
+        <from>concat('uid=',$inputVariable.payload/client:uid)</from>
+        <to>$InvokeForInsert_search_InputVariable.body/searchFilter</to>
+      </copy>
+    </assign>
+    <invoke name="InvokeForSearch" partnerLink="ldapReferenceForSearch"
+            portType="ns1:search_ptt" operation="search" inputVariable="InvokeForInsert_search_InputVariable"
+            outputVariable="InvokeForInsert_search_OutputVariable" bpelx:invokeAsDetail="no"/>
+    <assign name="AssignResult">
+      <copy>
+        <from>$InvokeForInsert_search_OutputVariable.body/searchResultEntry/userPassword/value</from>
+        <to>$outputVariable.payload/client:userPassword</to>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="ldapbpelprocessforsearch_client" portType="client:LdapBpelProcessForSearch" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

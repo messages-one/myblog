@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decisionServices xmlns="http://xmlns.oracle.com/bpel/rules" name="HastaKabulRules">
+   <ruleEngineProvider provider="Oracle_11.0.0.0.0" name="OracleRulesSDK">
+      <repository type="SCA-Archive">
+         <path>HastaKabul/oracle/rules/hastakabul/HastaKabulRules.rules</path>
+      </repository>
+   </ruleEngineProvider>
+   <decisionService name="HastaKabulRules_DecisionService_1" ruleEngineProviderReference="OracleRulesSDK" targetNamespace="http://xmlns.oracle.com/HastaKabulRules/HastaKabulRules_DecisionService_1">
+      <catalog>HastaKabulRules</catalog>
+      <pattern name="CallFunctionStateless">
+         <arguments>
+            <call>hastakabul.HastaKabulRules.DecisionService_1</call>
+         </arguments>
+      </pattern>
+      <pattern name="CallFunctionStateful">
+         <arguments>
+            <call>hastakabul.HastaKabulRules.DecisionService_1</call>
+         </arguments>
+      </pattern>
+   </decisionService>
+</decisionServices>

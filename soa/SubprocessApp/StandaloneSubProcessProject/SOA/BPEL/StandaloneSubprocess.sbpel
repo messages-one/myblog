@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer
+
+  Created: Wed Nov 12 16:08:21 EET 2014
+  Author:  agelenler
+  Type: BPEL 2.0 Subprocess
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<bpelx:subProcess name="StandaloneSubprocess"
+               targetNamespace="http://xmlns.oracle.com/SubprocessApp/StandaloneSubProcessProject/StandaloneSubprocess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/SubprocessApp/StandaloneSubProcessProject/StandaloneSubprocess"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xsi:type="bpel:tProcess" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/SubprocessApp/StandaloneSubProcessProject/dbReference"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReference">
+   <!--
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC
+       Set of activities coordinating the flow of messages across the
+       services integrated within this business process
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+  <partnerLinks>
+    <partnerLink name="dbReference" partnerLinkType="ns1:dbReference_plt" partnerRole="dbReference_role"/>
+  </partnerLinks>
+  <variables>
+    <variable name="InvokeInsert_insert_InputVariable" messageType="ns1:TestCollection_msg"/>
+    <variable name="InputVar" type="xsd:string"/>
+  </variables>
+  <sequence name="main">
+    <assign name="AssignForInsert">
+      <copy>
+        <from>$InputVar</from>
+        <to>$InvokeInsert_insert_InputVariable.TestCollection/ns2:Test/ns2:inputValue</to>
+      </copy>
+    </assign>
+    <invoke name="InvokeInsert" partnerLink="dbReference" portType="ns1:dbReference_ptt"
+            operation="insert" inputVariable="InvokeInsert_insert_InputVariable" bpelx:invokeAsDetail="no"/>
+  </sequence>
+</bpelx:subProcess>

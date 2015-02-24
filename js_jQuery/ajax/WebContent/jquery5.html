@@ -1,0 +1,24 @@
+<html>
+ <head>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script>
+   $(document).ready(function() {
+     $('#myButton').click(function () { 
+        $.ajax({
+          url: "http://localhost:8080/ajax/test.jsp",// you can call directly test.jsp
+          // test.jsp just include <%="successfully called"%>
+          // url: "http://localhost:8080/documenter/test.txt", you can also call a txt file here
+          success: function( data ) {
+          $( "#myDiv" ).html( data );
+          }
+         });
+     });   
+   });
+  </script>
+ </head>
+ <body>
+   <input type="button" id="myButton" value="fill the div with ajax">
+   <br/>
+   <div id="myDiv"></div>
+ </body>
+</html> 

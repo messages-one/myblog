@@ -1,0 +1,32 @@
+<wsdl:definitions
+     name="ldapReferenceForCompare"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/ldap/LdapExampleApp/LdapProjectForCompareAndAuthentication/ldapReferenceForCompare"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/ldap/LdapExampleApp/LdapProjectForCompareAndAuthentication/ldapReferenceForCompare"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:imp1="http://platform.integration.oracle/blocks/adapter/fw/metadata/ldapReferenceForCompare"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="compare_plt" >
+    <plt:role name="compare_role" >
+      <plt:portType name="tns:compare_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://platform.integration.oracle/blocks/adapter/fw/metadata/ldapReferenceForCompare" schemaLocation="../Schemas/ldapReferenceForCompare.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="compare_request_msg">
+        <wsdl:part name="body" element="imp1:compareRequest"/>
+    </wsdl:message>
+    <wsdl:message name="compare_response_msg">
+        <wsdl:part name="body" element="imp1:compareResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="compare_ptt">
+        <wsdl:operation name="compare">
+            <wsdl:input message="tns:compare_request_msg"/>
+            <wsdl:output message="tns:compare_response_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

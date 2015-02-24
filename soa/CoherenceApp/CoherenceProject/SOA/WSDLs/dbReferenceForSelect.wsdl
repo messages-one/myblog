@@ -1,0 +1,32 @@
+<wsdl:definitions
+     name="dbReferenceForSelect"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/CoherenceApp/CoherenceProject/dbReferenceForSelect"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/CoherenceApp/CoherenceProject/dbReferenceForSelect"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReferenceForSelect"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="dbReferenceForSelect_plt" >
+    <plt:role name="dbReferenceForSelect_role" >
+      <plt:portType name="tns:dbReferenceForSelect_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReferenceForSelect" schemaLocation="../Schemas/dbReferenceForSelect_table.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="dbReferenceForSelectSelect_inputParameters">
+        <wsdl:part name="dbReferenceForSelectSelect_inputParameters" element="top:dbReferenceForSelectSelect_idInputParameters"/>
+    </wsdl:message>
+    <wsdl:message name="PersonCollection_msg">
+        <wsdl:part name="PersonCollection" element="top:PersonCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="dbReferenceForSelect_ptt">
+        <wsdl:operation name="dbReferenceForSelectSelect">
+            <wsdl:input message="tns:dbReferenceForSelectSelect_inputParameters"/>
+            <wsdl:output message="tns:PersonCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

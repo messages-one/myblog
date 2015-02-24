@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReferenceForSelect" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/dbReferenceForSelect" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="PersonCollection" type="PersonCollection"/>
+   <xs:complexType name="PersonCollection">
+      <xs:sequence>
+         <xs:element name="Person" type="Person" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="Person">
+      <xs:sequence>
+         <xs:element name="id" type="xs:integer"/>
+         <xs:element name="name" type="xs:string" minOccurs="0" nillable="true"/>
+         <xs:element name="surname" type="string50" minOccurs="0" nillable="true"/>
+         <xs:element name="birthDate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="dbReferenceForSelectSelect_idInputParameters" type="dbReferenceForSelectSelect_id"/>
+   <xs:complexType name="dbReferenceForSelectSelect_id">
+      <xs:sequence>
+         <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="string50">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="50"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

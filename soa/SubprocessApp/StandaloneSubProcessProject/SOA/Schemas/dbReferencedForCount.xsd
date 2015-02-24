@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/dbReferencedForCount" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/dbReferencedForCount" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="dbReferencedForCountInput" type="dbReferencedForCountInput"/>
+   <xs:complexType name="dbReferencedForCountInput">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:element name="dbReferencedForCountOutput" type="dbReferencedForCountOutput"/>
+   <xs:complexType name="dbReferencedForCountOutput">
+      <xs:sequence>
+         <xs:element name="COUNT" type="xs:integer" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

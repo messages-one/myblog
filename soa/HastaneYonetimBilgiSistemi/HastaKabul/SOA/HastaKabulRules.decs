@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<decisionServices xmlns="http://xmlns.oracle.com/bpel/rules" name="HastaKabulRules">
+    <ruleEngineProvider provider="Oracle_11.0.0.0.0" name="OracleRulesSDK">
+        <repository type="SCA-Archive">
+            <path>HastaKabul/oracle/rules/hastakabul/HastaKabulRules.rules</path>
+        </repository>
+    </ruleEngineProvider>
+    <decisionService name="HastaKabulRules_DecisionService_1" ruleEngineProviderReference="OracleRulesSDK" targetNamespace="http://xmlns.oracle.com/HastaKabulRules/HastaKabulRules_DecisionService_1">
+        <catalog>HastaKabulRules</catalog>
+        <pattern name="CallFunctionStateless">
+            <arguments>
+                <call>hastakabul.HastaKabulRules.DecisionService_1</call>
+            </arguments>
+        </pattern>
+        <pattern name="CallFunctionStateful">
+            <arguments>
+                <call>hastakabul.HastaKabulRules.DecisionService_1</call>
+            </arguments>
+        </pattern>
+    </decisionService>
+    <schemaInformation>
+        <dictionary fqnPackage="hastakabul" fqnName="HastaKabulRules" updateNumber="102">
+            <schemaBrowser>
+                <package>com.oracle.xmlns.hastaneyonetimbilgisistemi.hastakabul.hastakabulbpel</package>
+                <namespace>http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel</namespace>
+            </schemaBrowser>
+            <schemaImport namespace="http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel" localPart="HastaKabulBpel.xsd" schemaLocation="Schemas/HastaKabulBpel.xsd">
+                <import namespace="http://xmlns.oracle.com/HastaneYonetimBilgiSistemi/HastaKabul/HastaKabulBpel" localPart="HastaKabulBpel.xsd" schemaLocation="Schemas/HastaKabulBpel.xsd"/>
+            </schemaImport>
+        </dictionary>
+    </schemaInformation>
+</decisionServices>

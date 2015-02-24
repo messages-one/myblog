@@ -1,0 +1,27 @@
+<html>
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+   $('#myButton').click(function () { 
+    if ($('#A').prop("checked")) {
+	  $('#A').prop("checked", false); 
+	  $('#B').prop("checked", true); 
+	}    
+	else if ($('#B').prop("checked")) {
+	 $('#A').prop("checked", true); 
+	  $('#B').prop("checked", false);
+	}
+     return true;
+   });   
+  });
+</script>
+</head>
+<body>
+<input type="radio" name="rd" id="A" value="A_value" checked="true">A<br/>
+<input type="radio" name="rd" id="B" value="B_value">B
+ <br/>
+ <input type="button" id="myButton" value="change selection">
+</body>
+</html> 

@@ -1,0 +1,25 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+  $(document).ready(function() {
+   $('#myButton').click(function () { 
+	   $.ajax({
+		    url: '/ajax/CallExternalDomain',
+		    data: {
+		        address: 'http://www.aligelenler.com/2014/11/using-html-and-innerhtml-in-jquery.html'
+		    },
+		    success: function(response) {
+		    	 $( "#myDiv" ).html( response ); 
+		    }
+		});
+   });   
+  });
+</script>
+</head>
+<body>
+ <input type="button" id="myButton" value="fill the div with ajax">
+ <br/>
+ <div id="myDiv"></div>
+</body>
+</html> 
