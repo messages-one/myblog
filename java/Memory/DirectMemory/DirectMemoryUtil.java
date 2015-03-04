@@ -20,7 +20,7 @@ import tr.com.havelsan.entity.GenericEntity;
  * The memory you create goes off the heap and are not managed by the garbage collector so it becomes your responsibility to deallocate the memory after 
  * you are done with it. Here is the utility class to gain access to the Unsafe class.
  * 
- * Instead of using Terracotta Big memory use Unsafe library to read/write ramç
+ * Instead of using Terracotta Big memory use Unsafe library to read/write ram
  * free memory when closing app, may also need from time to time.
  */
 
