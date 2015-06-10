@@ -16,7 +16,7 @@ import javax.mail.internet.MimeMessage;
 public class ReadMailUseGmail {
 
 	private static final String USER = "ali.gelenler@gmail.com";
-	private static final String PASSWORD = "pfnsdomathebjsjh";
+	private static final String PASSWORD = "xxx";
 	private static final boolean CLEAR = false;
 
 	public static void main(String[] args) {
