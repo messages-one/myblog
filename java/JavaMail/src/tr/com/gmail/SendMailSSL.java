@@ -20,7 +20,7 @@ public class SendMailSSL {
 	public static final int SHOW_AND_CLEAR = SHOW_MESSAGES + CLEAR_MESSAGES;
 	public static void main(String[] args) throws IOException {
 		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com");// localhost local TCP/IP monitorden izleyerek TLS /SSL (þifreli) farkýný görmek içi
+		props.put("mail.smtp.host", "smtp.gmail.com");// localhost local TCP/IP monitorden izleyerek TLS /SSL (Ã¾ifreli) farkÃ½nÃ½ gÃ¶rmek iÃ§i
 		props.put("mail.smtp.socketFactory.port", "465");// 80
 		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
@@ -34,7 +34,7 @@ public class SendMailSSL {
 		
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("ali.gelenler@gmail.com", "pfnsdomathebjsjh");
+				return new PasswordAuthentication("ali.gelenler@gmail.com", "xxx");
 			}
 		});
 
@@ -43,8 +43,8 @@ public class SendMailSSL {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("ali.gelenler@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ali.gelenler@gmail.com,uygulamacepte@gmail.com,elifyavuz@gmail.com"));
-			message.setSubject("Bu arada önceki mail java mail kütüphanesi ile gönderilmiþtir.");
-			message.setText("Sevgili okuyucu," + "\n\n aligelenler.blogspot.com ile çok güzel þeyler öðrenebilirsiniz. hehe!");
+			message.setSubject("Bu arada Ã¶nceki mail java mail kÃ¼tÃ¼phanesi ile gÃ¶nderilmiÃ¾tir.");
+			message.setText("Sevgili okuyucu," + "\n\n aligelenler.blogspot.com sitesini ziyaret ediniz!");
 
 			Transport.send(message);
 
