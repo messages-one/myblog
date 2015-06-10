@@ -15,16 +15,16 @@ public class SendMailTLS {
 	public static void main(String[] args) {
  
 		final String username = "ali.gelenler@gmail.com";
-		final String password = "pfnsdomathebjsjh";
+		final String password = "xxx";
 		/*
-		 * google dan aldýk, kendi þifreni girdiðinde Application-specific password required hatasý verir.
-		 * http://support.google.com/accounts/bin/answer.py?answer=185833 adresinden yukardaki pass u üretir. 
+		 * google dan aldÄ±k, kendi Ã¾ifreni girdiÄŸinde Application-specific password required hatasÃ½ verir.
+		 * http://support.google.com/accounts/bin/answer.py?answer=185833 adresinden yukardaki pass u Ã¼retir. 
 		 */
  
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");//localhost local TCP/IP monitorden izleyerek TLS /SSL (þifreli) farkýný görmek içi
+		props.put("mail.smtp.host", "smtp.gmail.com");//localhost local TCP/IP monitorden izleyerek TLS /SSL (Ã¾ifreli) farkÃ½nÃ½ gÃ¶rmek iÃ§i
 		props.put("mail.smtp.port", "587");//80
  
 		Session session = Session.getInstance(props,
