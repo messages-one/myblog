@@ -1,4 +1,4 @@
-package tr.com.havelsan.util;
+package tr.com.aligelenler;
 
 public interface MemoryUtil {
 
