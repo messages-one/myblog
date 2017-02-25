@@ -1,4 +1,4 @@
-package tr.com.havelsan.util;
+package tr.com.aligelenler;
 
 import java.lang.reflect.Field;
 
@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 
 import size.SizeUtil;
 import sun.misc.Unsafe;
-import tr.com.havelsan.entity.GenericEntity;
+import tr.com.aligelenler.entity.GenericEntity;
 
 /*
  * The sun.misc.Unsafe class allows you to allocate and deallocate native memory from Java like you were calling malloc and free from C. 
