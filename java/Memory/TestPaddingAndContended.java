@@ -76,7 +76,7 @@ End of thread 2, last value of myValue is 1 it took 3480275412 nanoseconds
 End of thread 1, last value of myVolatileValue is 1 it took 3492587998 nanoseconds
 Avg. running time: 3.34 sec
 -----------------------------------------------------------------------------------
-2 non-shared volatile with padding, suppose to be on different same cache line
+2 non-shared volatile with padding, suppose to be on different cache line
 First Attempt:
 End of thread 2, last value of myValue is 1 it took 3000347735 nanoseconds
 End of thread 1, last value of myVolatileValue is 1 it took 3032000048 nanoseconds
@@ -88,7 +88,7 @@ End of thread 1, last value of myVolatileValue is 1 it took 3091972217 nanosecon
 End of thread 2, last value of myValue is 1 it took 3106549306 nanoseconds
 Avg. running time: 3.07 sec
 -----------------------------------------------------------------------------------
-2 non-shared volatile with @Contended, suppose to be on different same cache line
+2 non-shared volatile with @Contended, suppose to be on different cache line
 First Attempt:
 End of thread 1, last value of myVolatileValue is 1 it took 2967917848 nanoseconds
 End of thread 2, last value of myValue is 1 it took 2991537851 nanoseconds
@@ -112,7 +112,7 @@ End of thread 2, last value of myValue is 1 it took 105320160 nanoseconds
 End of thread 1, last value of myVolatileValue is 1 it took 106646504 nanoseconds
 Avg. running time: 1.11 sec
 -----------------------------------------------------------------------------------
-2 non-shared non-volatile with padding, suppose to be on different same cache line
+2 non-shared non-volatile with padding, suppose to be on different cache line
 First Attempt:
 End of thread 1, last value of myVolatileValue is 1 it took 113062087 nanoseconds
 End of thread 2, last value of myValue is 1 it took 113854150 nanoseconds
