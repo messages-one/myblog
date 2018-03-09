@@ -16,7 +16,7 @@ public class TestPaddingAndContended {
 
     private static final long NUM_OF_ITERATION = 100000000L;
 
-    private static final TestPaddingAndContended INSTANCE = new TestPaddingAndContended();
+    public static final TestPaddingAndContended INSTANCE = new TestPaddingAndContended();
 
     private TestPaddingAndContended() {
 
