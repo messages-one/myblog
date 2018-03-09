@@ -73,26 +73,26 @@ public class TestPaddingAndContended {
 /**
  2 non-shared volatile without padding, suppose to be on the same cache line
  First Attempt:
- End of thread 1, last value of myVolatileValue is 1 it took 3133182407 nanoseconds
- End of thread 2, last value of myValue is 1 it took 3167983652 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 3133182407 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 3167983652 nanoseconds
  Second Attempt:
- End of thread 2, last value of myValue is 1 it took 3383002049 nanoseconds
- End of thread 1, last value of myVolatileValue is 1 it took 3418189666 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 3383002049 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 3418189666 nanoseconds
  Third Attempt:
- End of thread 2, last value of myValue is 1 it took 3480275412 nanoseconds
- End of thread 1, last value of myVolatileValue is 1 it took 3492587998 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 3480275412 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 3492587998 nanoseconds
  Avg. running time: 3.34 sec
  -----------------------------------------------------------------------------------
  2 non-shared volatile with padding, suppose to be on different cache line
  First Attempt:
- End of thread 2, last value of myValue is 1 it took 3000347735 nanoseconds
- End of thread 1, last value of myVolatileValue is 1 it took 3032000048 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 3000347735 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 3032000048 nanoseconds
  Second Attempt:
- End of thread 1, last value of myVolatileValue is 1 it took 3104793729 nanoseconds
- End of thread 2, last value of myValue is 1 it took 3143762961 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 3104793729 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 3143762961 nanoseconds
  Third Attempt:
- End of thread 1, last value of myVolatileValue is 1 it took 3091972217 nanoseconds
- End of thread 2, last value of myValue is 1 it took 3106549306 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 3091972217 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 3106549306 nanoseconds
  Avg. running time: 3.07 sec
  -----------------------------------------------------------------------------------
  2 non-shared volatile with @Contended, suppose to be on different cache line
@@ -109,25 +109,25 @@ public class TestPaddingAndContended {
  -----------------------------------------------------------------------------------
  2 non-shared non-volatile without padding, suppose to be on the same cache line
  First Attempt:
- End of thread 2, last value of myValue is 1 it took 112383522 nanoseconds
- End of thread 1, last value of myVolatileValue is 1 it took 114422239 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 112383522 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 114422239 nanoseconds
  Second Attempt:
- End of thread 1, last value of myVolatileValue is 1 it took 115202830 nanoseconds
- End of thread 2, last value of myValue is 1 it took 115687606 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 115202830 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 115687606 nanoseconds
  Third Attempt:
- End of thread 2, last value of myValue is 1 it took 105320160 nanoseconds
- End of thread 1, last value of myVolatileValue is 1 it took 106646504 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 105320160 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 106646504 nanoseconds
  Avg. running time: 1.11 sec
  -----------------------------------------------------------------------------------
  2 non-shared non-volatile with padding, suppose to be on different cache line
  First Attempt:
- End of thread 1, last value of myVolatileValue is 1 it took 113062087 nanoseconds
- End of thread 2, last value of myValue is 1 it took 113854150 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 113062087 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 113854150 nanoseconds
  Second Attempt:
- End of thread 2, last value of myValue is 1 it took 126021245 nanoseconds
- End of thread 1, last value of myVolatileValue is 1 it took 126020036 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 126021245 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 126020036 nanoseconds
  Third Attempt:
- End of thread 2, last value of myValue is 1 it took 109028728 nanoseconds
- End of thread 1, last value of myVolatileValue is 1 it took 109101776 nanoseconds
+ End of thread 2, last value of myVolatileValue2 is 1 it took 109028728 nanoseconds
+ End of thread 1, last value of myVolatileValue1 is 1 it took 109101776 nanoseconds
  Avg. running time: 1.16 sec
  */
