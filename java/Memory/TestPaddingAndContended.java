@@ -90,15 +90,15 @@ Avg. running time: 3.07 sec
 -----------------------------------------------------------------------------------
 2 non-shared volatile with @Contended, suppose to be on different cache line
 First Attempt:
-End of thread 1, last value of myVolatileValue is 1 it took 2967917848 nanoseconds
-End of thread 2, last value of myValue is 1 it took 2991537851 nanoseconds
+End of thread 1, last value of myVolatileValue1 is 1 it took 1406085998 nanoseconds
+End of thread 2, last value of myVolatileValue2 is 1 it took 1684038215 nanoseconds
 Second Attempt:
-End of thread 1, last value of myVolatileValue is 1 it took 3007234814 nanoseconds
-End of thread 2, last value of myValue is 1 it took 3040450727 nanoseconds
+End of thread 1, last value of myVolatileValue1 is 1 it took 1329552500 nanoseconds
+End of thread 2, last value of myVolatileValue2 is 1 it took 1374891105 nanoseconds
 Third Attempt:
-End of thread 2, last value of myValue is 1 it took 2943683272 nanoseconds
-End of thread 1, last value of myVolatileValue is 1 it took 2959770833 nanoseconds
-Avg. running time: 2.98 sec
+End of thread 2, last value of myVolatileValue2 is 1 it took 1093849103 nanoseconds
+End of thread 1, last value of myVolatileValue1 is 1 it took 1489967853 nanoseconds
+Avg: 1.39
 -----------------------------------------------------------------------------------
 2 non-shared non-volatile without padding, suppose to be on the same cache line
 First Attempt:
