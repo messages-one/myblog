@@ -36,7 +36,7 @@ public class TestPaddingAndContended {
 //	private volatile long dummyLong7;
 
     @Contended
-    public volatile int myVolatileValue2; // 4 bytes
+    private volatile int myVolatileValue2; // 4 bytes
 
     public static void main(String[] args) {
         Thread thread1 = new Thread(new Thread1Runnable());
