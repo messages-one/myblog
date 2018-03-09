@@ -7,6 +7,8 @@ import sun.misc.Contended;
  * By changing the variables to volatile and non-volatile, marking and unmarking the variables as @Contented,
  * and adding 7 long and 1 int variables to span whole cache line for a volatile value which is 64 bytes.
  * At the bottom of the class you can find various results of the tests with this class.
+ * Contended annotation does not work on user classpath by default and only work for classes on bootclasspath.
+ * So we need to add -XX:-RestrictContended VM argument on JVM startup.
  * @author Ali Gelenler
  */
 
