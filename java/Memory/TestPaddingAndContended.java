@@ -105,7 +105,7 @@ public class TestPaddingAndContended {
  Third Attempt:
  End of thread 2, last value of myVolatileValue2 is 1 it took 1093849103 nanoseconds
  End of thread 1, last value of myVolatileValue1 is 1 it took 1489967853 nanoseconds
- Avg: 1.39
+ Avg. running time: 1.39
  -----------------------------------------------------------------------------------
  2 non-shared non-volatile without padding, suppose to be on the same cache line
  First Attempt:
