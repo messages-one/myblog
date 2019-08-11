@@ -1,0 +1,12 @@
+#
+# Docker Compose for Demo Service
+#
+version: "2"
+services:
+  demo:
+    image: agelenler/demo-docker
+    ports:
+      - "8181:8181"
+      - "5005:5005"
+    environment:
+      - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=5005,server=y,suspend=n"
