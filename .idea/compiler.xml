@@ -16,6 +16,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo-docker" options="-parameters" />
+      <module name="java" options="--add-exports=java.base/jdk.internal.vm.annotation=ALL-UNNAMED" />
     </option>
   </component>
 </project>

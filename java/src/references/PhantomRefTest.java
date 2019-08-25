@@ -3,62 +3,120 @@ package references;
 import java.lang.ref.PhantomReference;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
+import java.lang.reflect.Field;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import static references.StrongReference.deleteOldDumps;
+import static references.StrongReference.runGC;
 
 
 public class PhantomRefTest {
 
     private volatile static boolean finishing = false;
+    private static final long WAIT_TIME_FOR_REMOVING_PHANTOM_REFERENCE_MS = 5000L;
 
     public static void main(String[] args) throws InterruptedException {
+        deleteOldDumps();
         PhantomRefTest phantomRefTest = new PhantomRefTest();
         A a = phantomRefTest.new A("a");
         ReferenceQueue<A> referenceQueue = new ReferenceQueue<>();
-        Reference<A> reference = phantomRefTest.new AFinalizer(a, referenceQueue);
+        String someInfoToUseInCleanUp = "some info";
+        Reference<A> reference = phantomRefTest.new MyFinalizer(a, someInfoToUseInCleanUp, referenceQueue);
+        HeapDump.dumpHeap("java/heap-dumps/phantomRefBeforeGCEligible.hprof", false);
         a = null;
         System.out.println("Phantom reference always return null: " + reference.get());
         System.out.println("Phantom reference queue return null before GC: " + referenceQueue.poll());
-        System.gc();
+        HeapDump.dumpHeap("java/heap-dumps/phantomRefBeforeGC.hprof", false);
+        runGC();
+        HeapDump.dumpHeap("java/heap-dumps/phantomRefAfterGC.hprof", false);
 
         CountDownLatch countDownLatch = new CountDownLatch(1);
-        phantomRefTest.monitorPhantomReference(referenceQueue, reference, countDownLatch);
-        countDownLatch.await();
-        finishing = true;
-        System.out.println(reference);//if you check internal referent here, it will be null as we cleared it.
-        //Note that after java 9 the referent cleared internally not waiting the phantomref object to be cleared.
-    }
 
-    private void monitorPhantomReference(ReferenceQueue<A> referenceQueue, Reference<A> reference, CountDownLatch latch) {
-        //ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        Runnable runnable = () -> {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Caught shutdown hook, finishing phantom reference monitoring!");
+            finishing = true;
             try {
-                while (!finishing) {
-                    //We can use either a loop with poll method and break if poll return not null and our ref or use blocking remove method
-                    AFinalizer finalizer;
-                    finalizer = (AFinalizer) referenceQueue.remove();//remove(10000L)
-                    //              while ((finalizer = referenceQueue.poll()) != reference) {
-                    //                      //can break with a common variable
-                    //              }
-                    System.out.println("We got the phantom referent object in the queue");
-                    System.out.println("Reference queue return the same ref object: " + (finalizer == reference));
-                    System.out.println("Phantom reference always return null: " + finalizer.get());
-                    finalizer.cleanUp();
-                    finalizer.clear();//if you do not call this, it will be cleared after phantomref object itself cleared. It is cleared after java9 automatically
-                    latch.countDown();
-                }
-            } catch (InterruptedException e) {
+                countDownLatch.await();
+                runGC();
+                HeapDump.dumpHeap("java/heap-dumps/phantomRefAfterCleanUp.hprof", false);
+                //if you check internal referent here (by looking with debugger), it will be null as we cleared it.
+                //If we would not call finalizer.clear() in monitoring thread here we will see the object value.
+                //Note that after java 9 the referent cleared internally not waiting the phantomref object to be cleared.
+                System.out.println("Getting internal referent by reflection as reference.get() always return null");
+                Field referentField = Reference.class.getDeclaredField("referent");
+                referentField.setAccessible(true);
+                A referent = (A) referentField.get(reference);
+                System.out.println("Check Referent: " + (referent == null ? null : referent.s));
+            } catch (InterruptedException | NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
-        };
-        //scheduledExecutorService.schedule(runnable, 5, TimeUnit.SECONDS); with this you can use finishing variable to shutdown the executor service
-        executorService.submit(runnable);
-        executorService.shutdown();
+            System.out.println("Finished all running threads. Exiting!");
+        }));
+        phantomRefTest.monitorPhantomReference(referenceQueue, reference, countDownLatch);
+
     }
 
-    class A {
+    private void monitorPhantomReference(ReferenceQueue<A> referenceQueue, Reference<A> reference,
+                                         CountDownLatch latch) {
+        ExecutorService executorService = null;
+        try {
+            executorService = Executors.newSingleThreadExecutor();
+            Runnable runnable = () -> {
+                try {
+                    //We can use either a loop with poll method and break if poll return not null and instead our ref
+                    //or use blocking remove method most probably with a timeout to prevent blocking forever
+                    //because in shut down thread we set finishing to true so that we want this thread to finish
+                    //processing and return.
+                    //Using poll method
+//                    MyFinalizer finalizer;
+//                    while ((finalizer = (MyFinalizer) referenceQueue.poll()) != reference && !finishing) {
+//                        finalizer.cleanUp();
+//                        //if you do not call this, it will be cleared after phantomref object itself cleared. It is cleared automatically after java9
+//                        finalizer.clear();
+//                        //can sleep for a while
+//                    }
+                    //Using remove method
+                    while (!finishing) {
+                        try {
+                            System.out.println("Start reading phantom reference from queue!");
+                            MyFinalizer finalizer = (MyFinalizer) referenceQueue.remove(WAIT_TIME_FOR_REMOVING_PHANTOM_REFERENCE_MS);
+                            if (finalizer != null) {
+                                System.out.println("We got the phantom referenced object in the queue");
+                                System.out.println("Reference queue return the same ref object: " + (finalizer == reference));
+                                System.out.println("Phantom reference always return null: " + finalizer.get());
+                                finalizer.cleanUp();
+                                //if you do not call this, it will be cleared after phantomref object itself cleared. It is cleared automatically after java9
+                                //finalizer.clear();
+                            }
+                        } catch (IllegalArgumentException e) {
+                            e.printStackTrace();
+                            continue;
+                        } catch (InterruptedException e) {
+                            continue;
+                        }
+                    }
+                    System.out.println("Exiting phantom reference monitoring thread!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    System.out.println("Counting down the latch in phantom reference monitoring thread!");
+                    latch.countDown();
+                }
+            };
+            executorService.submit(runnable);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (executorService != null) {
+                executorService.shutdown();
+            }
+        }
+
+    }
+
+    private class A {
         public A(String s) {
             this.s = s;
         }
@@ -67,10 +125,10 @@ public class PhantomRefTest {
     }
 
     /**
-     * Cannot resurrect the referent here. If you try to assign to a property, it will be still referenced by your app
-     * so not be added to reference queue. The object will be phantomly reachable only when you have no reference from your app.
+     * The object will be phantomly reachable only when you have no reference from your app.
      */
-    public class AFinalizer extends PhantomReference<A> {
+    private class MyFinalizer extends PhantomReference<A> {
+        String someInfoToUseInCleanUp;
 
         /**
          * Creates a new phantom reference that refers to the given object and
@@ -84,14 +142,14 @@ public class PhantomRefTest {
          * @param referent the object the new phantom reference will refer to
          * @param q        the queue with which the reference is to be registered,
          */
-        public AFinalizer(A referent, ReferenceQueue<? super A> q) {
+        public MyFinalizer(A referent, String someInfo, ReferenceQueue<? super A> q) {
             super(referent, q);
+            this.someInfoToUseInCleanUp = someInfo;
         }
 
         public void cleanUp() {
-            System.out.println("Clean up resources!");
+            System.out.println("Clean up resources with info " + someInfoToUseInCleanUp);
         }
     }
-
 
 }

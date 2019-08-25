@@ -13,10 +13,7 @@ public class StrongReference {
         references.HeapDump.dumpHeap("java/heap-dumps/strongRefBeforeGCEligible.hprof", false);
         a = null; // Make the strong reference eligible for GC
         references.HeapDump.dumpHeap("java/heap-dumps/strongRefBeforeGC.hprof", false);
-        System.out.println("Running GC..");
-        System.gc(); // Hint to run gc
-        Thread.sleep(2000L);
-        System.out.println("Finished running GC..");
+        runGC();
         references.HeapDump.dumpHeap("java/heap-dumps/strongRefAfterGC.hprof", false);
     }
 
@@ -44,5 +41,12 @@ public class StrongReference {
             file.delete();
         }
         return files.length != 0;
+    }
+
+    static void runGC() throws InterruptedException {
+        System.out.println("Running GC..");
+        System.gc(); // Hint to run gc
+        Thread.sleep(2000L); // sleep hoping to let GC thread run
+        System.out.println("Finished running GC..");
     }
 }

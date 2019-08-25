@@ -15,6 +15,7 @@ public class HeapDump {
     private static class InstanceHolder {
         private static final HotSpotDiagnosticMXBean HOTSPOT_DIAGNOSTIC_MX_BEAN;
         static {
+            System.setProperty("jdk.management.heapdump.allowAnyFileSuffix", "true");
             MBeanServer server = ManagementFactory.getPlatformMBeanServer();
             try {
                 HOTSPOT_DIAGNOSTIC_MX_BEAN = ManagementFactory.newPlatformMXBeanProxy(server,

@@ -1,7 +1,5 @@
 package memory;
 
-import sun.misc.Contended;
-
 /**
  * This class is used to test the false sharing concept. It uses 2 threads changing 2 independent int variables.
  * By changing the variables to volatile and non-volatile, marking and unmarking the variables as @Contented,
@@ -22,7 +20,7 @@ public class TestPaddingAndContended {
 
     }
 
-    @Contended
+    @jdk.internal.vm.annotation.Contended
     private volatile int myVolatileValue1; // 4 bytes
 
     // fields used for padding to prevent false sharing - uncomment to test padding after removing @Contented above
@@ -35,7 +33,7 @@ public class TestPaddingAndContended {
 //	private volatile long dummyLong6;
 //	private volatile long dummyLong7;
 
-    @Contended
+    @jdk.internal.vm.annotation.Contended
     private volatile int myVolatileValue2; // 4 bytes
 
     public static void main(String[] args) {

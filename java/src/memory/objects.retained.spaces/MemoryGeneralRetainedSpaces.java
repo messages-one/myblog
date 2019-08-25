@@ -22,6 +22,9 @@ public class MemoryGeneralRetainedSpaces implements Serializable {
 		this.innerStr = innerStr;
 	}
 
+	public MemoryGeneralRetainedSpaces() {
+	}
+
 	// private static long mySizeOf(Serializable ser) throws IOException {
 	// ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	// ObjectOutputStream oos = new ObjectOutputStream(baos);
@@ -40,9 +43,14 @@ public class MemoryGeneralRetainedSpaces implements Serializable {
 		 * 64 bitte header 8 yerine 12 byte geri kalan ayn�
 		 * E�er sadece 64 bit JVM de ge�erli olan ve <32GB ram de �al��an XX:-UseCompressedOops VM arg� turn off yap�p s�k��t�rmay� kapat�rsan
 		 * 2*8 = 16 header ve member pointer, array elemanlar�na pointer, array length ve stackdeki adres ref de�erleri 8 bytes olur.
-		 * String 1.7.0_06 sonras� 1 hashcode int, 1 hash32 int ve char[] i�erir (daha �nce final de�ilken art�k final d�r) 
+		 * String 1.7.0_06 sonras� 1 hashcode int, 1 hash32 int ve char[] i�erir (daha �nce final de�ilken art�k final d�r)
 		 */
-		
+
+		A staticNestedClassInstance = new A("a");
+		System.out.println(SizeUtil.fullSizeOf(staticNestedClassInstance));//64 bit: 64bytes -> 12(header for A) + 4(ref to String) + (48 bytes(12(header for String) +  4(for hashcode val) + 4(for hash32 val)  + 4(ref to char[])  : 24 round to 24 --> + (12(header for char[]) + 4(for len of char[]) + 2(data)->round to 24) = 48 round to 48))
+		MemoryGeneralRetainedSpaces.B innerClassInstance = new MemoryGeneralRetainedSpaces().new B("a");
+		System.out.println(SizeUtil.fullSizeOf(innerClassInstance));//64 bit: 96bytes -> 24(12(header for B) + 4 (ref to String) + 4(this ref to outer)) + 24(for outer MemoryGeneralRetainedSpaces(12(header) + 4(ref to string) + 4(int))) + (48(for String))
+
 		boolean bo1 = true;
 		System.out.println(SizeUtil.fullSizeOf(bo1));// 32 bit-> 16 bytes(8(header) + 1(data)=9 round to 16)
 		// 64 bit-> 16 bytes(12(header) + 1(data)=13 round to 16)
@@ -102,19 +110,19 @@ public class MemoryGeneralRetainedSpaces implements Serializable {
 		System.out.println(SizeUtil.sizeOf(arrByte));
 		System.out.println(SizeUtil.fullSizeOf(arrByte));
 
-		Byte[] arrByteObj = new Byte[] { 3, 4, 5 };// 32 bit-> 72 bytes(8(header) + 4(len of Byte[]) + 3 * 4(4 byte for ref of each element) + 3 * 16(8+1 rounded to 16)(data)=72 round to 72)
+		Byte[] arrByteObj = new Byte[]{3, 4, 5};// 32 bit-> 72 bytes(8(header) + 4(len of Byte[]) + 3 * 4(4 byte for ref of each element) + 3 * 16(8+1 rounded to 16)(data)=72 round to 72)
 		// 64 bit-> 80 bytes(12(header) + 4(len of Byte[]) + 3 * 4(4 byte for ref of each element) + 3 * 16(12+1 rounded to 16)(data)=76 round to 80)
 		// 64 bit-> 120 bytes(16(header) + 8(len of Byte[]) + 3 * 8(8 byte for ref of each element) + 3 * 24(16+1 rounded to 24)(data)=120 round to 120) XX:-UseCompressedOops VM arg
 		System.out.println(SizeUtil.sizeOf(arrByteObj));
 		System.out.println(SizeUtil.fullSizeOf(arrByteObj));
 
-		int[] arrInt = new int[] { 0 };// 32 bit-> 16 bytes(8(header) + 4(len of byte[]) + 4(data)=16 round to 16)
+		int[] arrInt = new int[]{0};// 32 bit-> 16 bytes(8(header) + 4(len of byte[]) + 4(data)=16 round to 16)
 		// 64 bit-> 24 bytes(12(header) + 4(len of byte[]) + 4(data)=20 round to 24)
 		// 64 bit-> 24 bytes(16(header) + 8(len of byte[]) + 4(data)=28 round to 32) XX:-UseCompressedOops VM arg
 		System.out.println(SizeUtil.sizeOf(arrInt));
 		System.out.println(SizeUtil.fullSizeOf(arrInt));
 
-		long[] arrLong = new long[] { 0 };// 32 bit-> 24 bytes(8(header) + 4(len of byte[]) + 8(data)=20 round to 24)
+		long[] arrLong = new long[]{0};// 32 bit-> 24 bytes(8(header) + 4(len of byte[]) + 8(data)=20 round to 24)
 		// 64 bit-> 24 bytes(12(header) + 4(len of byte[]) + 8(data)=24 round to 24)
 		// 64 bit-> 24 bytes(16(header) + 8(len of byte[]) + 8(data)=32 round to 32) XX:-UseCompressedOops VM arg
 		System.out.println(SizeUtil.sizeOf(arrLong));
@@ -143,7 +151,7 @@ public class MemoryGeneralRetainedSpaces implements Serializable {
 		// 32 bit-> 3848 bytes(8(header for String) + 4(for len of String) +4(for offset of String) + + 4(for hashcode val) + 4(ref to char[]) + (8(header for char[]) + 4(for len of char[]) + (1904 * 2)(data)->3820 round to 3824) = 3848 rounded to 3848)
 		// 64 bit-> 3848 bytes(12(header for String) + 4(for len of String) +4(for offset of String) + + 4(for hashcode val) + 4(ref to char[]) + (12(header for char[]) + 4(for len of char[]) + (1904 * 2)(data)->3824 round to 3824) = 3848 rounded to 3848)
 		// 64 bit-> 3864 bytes(16(header for String) +  4(for hashcode var) + 4(for hash32 var)  + 8(ref to char[]) = 32 + (16(header for char[]) + 8(for len of char[]) + (1904 * 2)(data)->3832 round to 3832) = 3864 rounded to 3864) XX:-UseCompressedOops VM arg
-		
+
 		System.out.println("a len " + a.length());
 		System.out.println(SizeUtil.sizeOf(a));
 		System.out.println(SizeUtil.fullSizeOf(a));
@@ -172,7 +180,6 @@ public class MemoryGeneralRetainedSpaces implements Serializable {
 		System.out.println(((String) obj).length());
 		System.out.println(SizeUtil.sizeOf(obj));
 		System.out.println(SizeUtil.fullSizeOf(obj));
-
 
 
 	}
@@ -213,4 +220,21 @@ public class MemoryGeneralRetainedSpaces implements Serializable {
 	// return "Test [innerStr=" + innerStr + ", innerInt=" + innerInt + "]";
 	// }
 
+
+	static class A {
+		public A(String s) {
+			this.s = s;
+		}
+		String s;
+	}
+
+	private class B {
+		public B(String s) {
+			this.s = s;
+		}
+		String s;
+	}
+
 }
+
+
