@@ -14,6 +14,7 @@ public class HeapDump {
 
     private static class InstanceHolder {
         private static final HotSpotDiagnosticMXBean HOTSPOT_DIAGNOSTIC_MX_BEAN;
+
         static {
             System.setProperty("jdk.management.heapdump.allowAnyFileSuffix", "true");
             MBeanServer server = ManagementFactory.getPlatformMBeanServer();
@@ -27,7 +28,7 @@ public class HeapDump {
     }
 
     public static HotSpotDiagnosticMXBean getHotSpotDiagnosticMXBean() {
-            return InstanceHolder.HOTSPOT_DIAGNOSTIC_MX_BEAN;
+        return InstanceHolder.HOTSPOT_DIAGNOSTIC_MX_BEAN;
     }
 
     public static void dumpHeap(String fileName, boolean dumpLive) {
@@ -39,11 +40,7 @@ public class HeapDump {
     }
 
     public static void dumpHeap(String fileName) {
-        try {
-            getHotSpotDiagnosticMXBean().dumpHeap(fileName, DUMP_LIVE);
-        } catch (IOException e) {
-            throw new RuntimeException("Could not take heap dump!", e);
-        }
+        dumpHeap(fileName, DUMP_LIVE);
     }
 
     public static void main(String[] args) {

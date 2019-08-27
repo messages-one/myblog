@@ -23,6 +23,5 @@ public class Test {
         String[] arr4 = s.split(",", -1);//[1, 2, 3, , , ]
         System.out.println(Arrays.toString(arr4));
 
-
     }
 }
